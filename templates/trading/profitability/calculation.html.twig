@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ "steps.label"|trans }}
+    {{ "trading.profitability.label"|trans }}
 {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-12">
             <h1>
-                {{ "steps.label"|trans }}
+                {{ "trading.profitability.label"|trans }}
             </h1>
         </div>
     </div>
@@ -22,7 +22,11 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {% include 'statistic/steps/list.html.twig' %}
+            {% if totalEarnings %}
+                <p class="text-info">
+                    {{ "trading.profitability.total_earnings"|trans({'{{period}}': dto.numberOfDays, '{{numberOfBets}}': dto.numberOfBetsPerDay, '{{totalEarnings}}': totalEarnings}) }}
+                </p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

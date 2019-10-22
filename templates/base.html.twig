@@ -22,7 +22,12 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('steps', {'_locale': app.request.locale}) }}">
-                        {{ "steps.title"|trans }}
+                        {{ "trading.martingail.steps.title"|trans }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('profitability', {'_locale': app.request.locale}) }}">
+                        {{ "trading.profitability.title"|trans }}
                     </a>
                 </li>
             </ul>
