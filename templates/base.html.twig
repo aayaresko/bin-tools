@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
+        <title>{% block title %}Binary tools{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('base.css') }}">
+        {% endblock %}
     </head>
     <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ path('index') }}">Binary tools</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('steps', {'_locale': app.request.locale}) }}">
+                        {{ "steps.title"|trans }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content" class="container-fluid">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="form-group text-center">
+            <div class="col-12">
+                <p>&copy; 2017-{{ 'now'|date('Y') }} @DeathSpade</p>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
     </body>
 </html>

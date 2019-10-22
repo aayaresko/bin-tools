@@ -1,3 +1,19 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+index:
+    path: /
+    controller: App\Controller\DefaultController::steps
+    defaults: {_locale: en}
+    methods: [GET]
+    requirements:
+        _locale: en|ru
+
+steps:
+    path: /{_locale}/statistic/steps
+    controller: App\Controller\StatisticController::steps
+    defaults: {_locale: en}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
