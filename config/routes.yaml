@@ -4,15 +4,23 @@
 
 index:
     path: /
-    controller: App\Controller\DefaultController::steps
+    controller: App\Controller\DefaultController::index
     defaults: {_locale: en}
     methods: [GET]
     requirements:
         _locale: en|ru
 
 steps:
-    path: /{_locale}/statistic/steps
+    path: /{_locale}/trading/martingail/steps
     controller: App\Controller\StatisticController::steps
+    defaults: {_locale: en}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
+
+profitability:
+    path: /{_locale}/trading/profitability
+    controller: App\Controller\StatisticController::tradingProfitability
     defaults: {_locale: en}
     methods: [GET, POST]
     requirements:

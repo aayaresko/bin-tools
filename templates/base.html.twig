@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="{{ asset('favicon.ico') }}">
-        <title>{% block title %}Binary tools{% endblock %}</title>
+        <title>{% block title %}Binary options tools{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('base.css') }}">
@@ -14,7 +14,7 @@
     </head>
     <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ path('index') }}">Binary tools</a>
+        <a class="navbar-brand" href="{{ path('index') }}">Binary options tools</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +22,12 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('steps', {'_locale': app.request.locale}) }}">
-                        {{ "steps.title"|trans }}
+                        {{ "trading.martingail.steps.title"|trans }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('profitability', {'_locale': app.request.locale}) }}">
+                        {{ "trading.profitability.title"|trans }}
                     </a>
                 </li>
             </ul>

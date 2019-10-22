@@ -13,9 +13,9 @@ class StepsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('depositAmount', NumberType::class, ['label' => 'steps.deposit_amount'])
-            ->add('number', NumberType::class, ['label' => 'steps.number'])
-            ->add('firstStepPercent', NumberType::class, ['label' => 'steps.first_step_percent']);
+            ->add('depositAmount', NumberType::class, ['label' => 'trading.martingail.steps.deposit_amount'])
+            ->add('number', NumberType::class, ['label' => 'trading.martingail.steps.number'])
+            ->add('firstStepPercent', NumberType::class, ['label' => 'trading.martingail.steps.first_step_percent']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

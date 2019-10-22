@@ -1,13 +1,26 @@
-steps:
-    title: "Number of steps calculation"
-    deposit_amount: "Deposit amount"
-    number: "Number of steps"
-    first_step_percent: "First step percent"
+trading:
     calculate: "Calculate"
-    label: "Build steps for deposit by Martingail"
-    list_title: "Okay, so length steps for deposit amount are"
-    info: "Total spend will be totalSpend. That is word than initial deposit."
-    step: "step"
-    amount:
-        bigger: "bigger"
-        lower: "lower"
+    martingail:
+        steps:
+            title: "Number of steps calculation"
+            deposit_amount: "Deposit amount"
+            number: "Number of steps"
+            first_step_percent: "First step percent"
+            calculate: "Calculate"
+            label: "Build steps for deposit by Martingail"
+            list_title: "Okay, so length steps for deposit amount are"
+            info: "Total spend will be totalSpend. That is word than initial deposit."
+            step: "step"
+            amount:
+                bigger: "bigger"
+                lower: "lower"
+    profitability:
+        title: "Trading profitability calculation"
+        deposit_amount: "Deposit amount"
+        label: "Calculate your trading profitability"
+        number_of_days: "Number of trading days"
+        number_of_bets_per_day: "Number of bets per day"
+        bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"
+        profitable_bets_percentage: "Profitable bets (in percentage)"
+        profit_per_bet_percentage: "Profit per bet (in percentage)"
+        total_earnings: "Total earnings for {{period}} with {{numberOfBets}} per day will be {{totalEarnings}}"
