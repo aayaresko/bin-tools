@@ -4,7 +4,7 @@ namespace App\Dto;
 
 class StepsDto
 {
-    public $depositAmount;
-    public $number;
-    public $firstStepPercent;
+    public $depositAmount = 200;
+    public $number = 5;
+    public $firstStepPercent = 1;
 }
