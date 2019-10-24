@@ -1,5 +1,8 @@
 save: "Сохранить"
 trading:
+    user:
+        results:
+            title: "Результаты пользовтеля {{user}}"
     results:
         title: "Мои результаты"
         create: "Сохранить новый результат"

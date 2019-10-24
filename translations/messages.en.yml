@@ -1,5 +1,8 @@
 save: "Save"
 trading:
+    user:
+        results:
+            title: "{{user}} user results"
     results:
         title: "My results"
         create: "Save new result"

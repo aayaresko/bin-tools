@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Trading\Result;
+use App\Entity\User;
 use App\Form\Trading\ResultType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,6 +18,14 @@ class ResultController extends AbstractController
         $data = $repository->findBy(['user' => $this->getUser()]);
 
         return $this->render('trading/result/index.html.twig', compact('data'));
+    }
+
+    public function indexByUser(User $user): Response
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
+        $data = $repository->findBy(compact('user'));
+
+        return $this->render('trading/result/index_by_user.html.twig', compact('data', 'user'));
     }
 
     public function create(Request $request): Response
