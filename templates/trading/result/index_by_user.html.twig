@@ -20,6 +20,9 @@
             {% endif %}
             <div class="col-4">
                 <div class="card">
+                    {% if item.image %}
+                        <img src="{{ asset(item.image) | imagine_filter('result_image_thumbnail_widen') }}" class="card-img-top" />
+                    {% endif %}
                     <div class="card-header">
                         <span class="float-left">
                             {{ item.date|date('d.m.Y') }}

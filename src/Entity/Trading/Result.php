@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Trading\ResultRepository")
+ * @Vich\Uploadable
  */
 class Result
 {
@@ -72,7 +73,7 @@ class Result
     /**
      * @var File
      *
-     * @Vich\UploadableField(mapping="result_media", fileNameProperty="file")
+     * @Vich\UploadableField(mapping="result_media", fileNameProperty="image")
      */
     private $mediaFile;
 
@@ -144,6 +145,18 @@ class Result
     public function setNotes(string $notes): self
     {
         $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image = null): self
+    {
+        $this->image = $image;
 
         return $this;
     }

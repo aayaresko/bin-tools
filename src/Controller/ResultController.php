@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Trading\Result;
 use App\Entity\User;
 use App\Form\Trading\ResultType;
+use App\Service\ImageProcessor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class ResultController extends AbstractController
         return $this->render('trading/result/index_by_user.html.twig', compact('data', 'user'));
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request, ImageProcessor $imageProcessor): Response
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Result();
@@ -41,6 +42,8 @@ class ResultController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($entity);
             $em->flush();
+
+            $imageProcessor->filter($entity->getImage(), ImageProcessor::IMAGE_WIDEN, true);
 
             return $this->redirectToRoute('results_index');
         }
