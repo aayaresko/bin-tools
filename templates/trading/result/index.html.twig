@@ -35,9 +35,29 @@
                             {{ 'trading.results.notes'|trans }}: {{ item.notes }}<br/>
                         </p>
                     </div>
-                    <div class="card-footer text-muted">
-                        <a href="#">{{ 'trading.results.view_image'|trans }}</a><br/>
-                    </div>
+                    {% if item.image %}
+                        {% set modalId = "modal" ~ item.id %}
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ modalId }}">
+                                {{ 'trading.results.view_image'|trans }}
+                            </button>
+                            <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">{{ 'close'|trans }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset(item.image) | imagine_filter('result_image_widen') }}" class="img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
