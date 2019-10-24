@@ -25,3 +25,6 @@ profitability:
     methods: [GET, POST]
     requirements:
         _locale: en|ru
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

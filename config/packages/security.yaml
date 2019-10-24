@@ -1,7 +1,13 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
+        default:
+            entity:
+                class: App\Entity\User
+                property: username
+    encoders:
+        App\Entity\User: bcrypt
+        FOS\UserBundle\Model\UserInterface: bcrypt
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
