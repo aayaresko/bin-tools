@@ -3,18 +3,19 @@
 namespace App\Controller;
 
 use App\Dto\StepsDto;
-use App\Dto\TradingProfitabilityDto;
+use App\Dto\Trading\ProfitabilityDto;
 use App\Form\StepsType;
-use App\Form\TradingProfitabilityType;
+use App\Form\Trading\ProfitabilityType;
 use App\Service\StepsCounter;
 use App\Service\TradingProfitabilityCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class StatisticController extends AbstractController
 {
-    public function steps(Request $request, StepsCounter $counter)
+    public function steps(Request $request, StepsCounter $counter): Response
     {
         $dto = new StepsDto();
         $form = $this->createForm(StepsType::class, $dto);
@@ -35,10 +36,10 @@ class StatisticController extends AbstractController
         );
     }
 
-    public function tradingProfitability(Request $request, TradingProfitabilityCalculator $calculator)
+    public function tradingProfitability(Request $request, TradingProfitabilityCalculator $calculator): Response
     {
-        $dto = new TradingProfitabilityDto();
-        $form = $this->createForm(TradingProfitabilityType::class, $dto);
+        $dto = new ProfitabilityDto();
+        $form = $this->createForm(ProfitabilityType::class, $dto);
 
         $form->add('calculate', SubmitType::class, ['label' => 'trading.calculate']);
         $form->handleRequest($request);

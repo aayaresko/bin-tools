@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ "trading.results.title"|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1>
+                {{ "trading.results.title"|trans }}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for item in data %}
+            {% if loop.index0 is divisible by(2) %}
+                <div class="w-100"></div>
+                <br/>
+            {% endif %}
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">{{ item.date|date("d.m.Y") }}</div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{ 'trading.results.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
+                            {{ 'trading.results.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
+                            {{ 'trading.results.profit'|trans }}: {{ item.profit }}<br/>
+                            {{ 'trading.results.spent'|trans }}: {{ item.spent }}<br/>
+                            {{ 'trading.results.notes'|trans }}: {{ item.notes }}<br/>
+                        </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a href="#">{{ 'trading.results.view_image'|trans }}</a><br/>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

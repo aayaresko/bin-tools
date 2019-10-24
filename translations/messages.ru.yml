@@ -1,4 +1,15 @@
+save: "Сохранить"
 trading:
+    results:
+        title: "Мои результаты"
+        create: "Сохранить новый результат"
+        opening_quote: "Цена открытия"
+        closing_quote: "Цена закрытия"
+        spent: "Потрачено"
+        profit: "Прибыль"
+        notes: "Заметки"
+        date: "Дата"
+        view_image: "Смотреть картинку"
     calculate: "Посчитать"
     martingail:
         steps:
@@ -17,7 +28,6 @@ trading:
     profitability:
         title: "Рассчёт прибыльности 'торговли'"
         deposit_amount: "Размер депозита"
-        label: "Посчитать прибыльность"
         number_of_days: "Количество дней"
         number_of_bets_per_day: "Количество сделок в день"
         bet_size_in_percentage: "Пороцент (от общей суммы депозита) на одну сделку"

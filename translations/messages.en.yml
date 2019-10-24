@@ -1,4 +1,15 @@
+save: "Save"
 trading:
+    results:
+        title: "My results"
+        create: "Save new result"
+        opening_quote: "Opening quote"
+        closing_quote: "Closing quote"
+        spent: "Spent"
+        profit: "Profit"
+        notes: "Notes"
+        date: "Date"
+        view_image: "View image"
     calculate: "Calculate"
     martingail:
         steps:
@@ -17,7 +28,6 @@ trading:
     profitability:
         title: "Trading profitability calculation"
         deposit_amount: "Deposit amount"
-        label: "Calculate your trading profitability"
         number_of_days: "Number of trading days"
         number_of_bets_per_day: "Number of bets per day"
         bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"

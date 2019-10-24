@@ -36,7 +36,7 @@ class Result
      *
      * @ORM\Column(type="integer")
      */
-    private $spend = 0;
+    private $spent = 0;
 
     /**
      * @var float
@@ -96,14 +96,14 @@ class Result
         return $this;
     }
 
-    public function getSpend(): int
+    public function getSpent(): int
     {
-        return $this->spend;
+        return $this->spent;
     }
 
-    public function setSpend(int $spend): self
+    public function setSpent(int $spent): self
     {
-        $this->spend = $spend;
+        $this->spent = $spent;
 
         return $this;
     }

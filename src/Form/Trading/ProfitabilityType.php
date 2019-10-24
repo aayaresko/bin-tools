@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Trading;
 
-use App\Dto\TradingProfitabilityDto;
+use App\Dto\Trading\ProfitabilityDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TradingProfitabilityType extends AbstractType
+class ProfitabilityType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -24,7 +24,7 @@ class TradingProfitabilityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TradingProfitabilityDto::class,
+            'data_class' => ProfitabilityDto::class,
             'validation_group' => 'trading_profitability_calculation'
         ]);
     }

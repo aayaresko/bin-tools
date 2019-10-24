@@ -1,12 +1,30 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+logout:
+    path: /logout
 
 index:
-    path: /
+    path: /{_locale}
     controller: App\Controller\DefaultController::index
     defaults: {_locale: en}
     methods: [GET]
+    requirements:
+        _locale: en|ru
+
+results_index:
+    path: /{_locale}/results
+    controller: App\Controller\ResultController::index
+    defaults: {_locale: en}
+    methods: [GET]
+    requirements:
+        _locale: en|ru
+
+results_create:
+    path: /{_locale}/results/create
+    controller: App\Controller\ResultController::create
+    defaults: {_locale: en}
+    methods: [GET, POST]
     requirements:
         _locale: en|ru
 

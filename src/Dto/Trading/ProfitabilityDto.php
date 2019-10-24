@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dto;
+namespace App\Dto\Trading;
 
-class TradingProfitabilityDto
+class ProfitabilityDto
 {
     public $depositAmount = 200;
     public $numberOfDays = 20;
