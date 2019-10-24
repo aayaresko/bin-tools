@@ -4,15 +4,18 @@ namespace App\Entity\Trading;
 
 use App\Entity\User;
 use App\Helper\HasCreatedAtTrait;
+use App\Helper\HasMediaFileTrait;
 use App\Helper\HasUserTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Trading\ResultRepository")
  */
 class Result
 {
-    use HasUserTrait, HasCreatedAtTrait;
+    use HasUserTrait, HasCreatedAtTrait, HasMediaFileTrait;
 
     /**
      * @ORM\Id
@@ -46,6 +49,8 @@ class Result
     private $profit = 0.00;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="text")
      */
     private $notes;
@@ -57,8 +62,19 @@ class Result
      */
     private $user;
 
-    // TODO
+    /**
+     * @var mixed
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $image;
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="result_media", fileNameProperty="file")
+     */
+    private $mediaFile;
 
     /**
      * @var \DateTime

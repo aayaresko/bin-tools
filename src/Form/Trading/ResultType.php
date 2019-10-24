@@ -5,6 +5,7 @@ namespace App\Form\Trading;
 use App\Entity\Trading\Result;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,6 +17,7 @@ class ResultType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('media_file', FileType::class)
             ->add('openingQuote', MoneyType::class, [
                 'label' => 'trading.results.opening_quote',
                 'currency' => 'USD'
