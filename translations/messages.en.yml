@@ -1,18 +1,21 @@
 save: "Save"
 created: "created at"
 trading:
+    tools: "Tools"
     user:
         results:
             title: "{{user}} user results"
     results:
         title: "My results"
         create: "Save new result"
+        list: "View my results"
         opening_quote: "Opening quote"
         closing_quote: "Closing quote"
         spent: "Spent"
         profit: "Profit"
         notes: "Notes"
         date: "Date"
+        image: "Image"
         view_image: "View image"
     calculate: "Calculate"
     martingail:

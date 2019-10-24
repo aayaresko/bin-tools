@@ -20,19 +20,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('steps', {'_locale': app.request.locale}) }}">
-                        {{ "trading.martingail.steps.title"|trans }}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'trading.tools'|trans }}
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('profitability', {'_locale': app.request.locale}) }}">
-                        {{ "trading.profitability.title"|trans }}
-                    </a>
+                    <div class="dropdown-menu" aria-labelledby="toolsDropdown">
+                        <a class="dropdown-item" href="{{ path('steps') }}">{{ "trading.martingail.steps.title"|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('profitability') }}">{{ "trading.profitability.title"|trans }}</a>
+                    </div>
                 </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('results_index') }}">{{ 'trading.results.title'|trans }}</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resultsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'trading.results.title'|trans }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="resultsDropdown">
+                            <a class="dropdown-item" href="{{ path('results_index') }}">{{ 'trading.results.list'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('results_create') }}">{{ 'trading.results.create'|trans }}</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>

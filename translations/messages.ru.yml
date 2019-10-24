@@ -1,18 +1,21 @@
 save: "Сохранить"
 created: "создано"
 trading:
+    tools: "Инструменты"
     user:
         results:
             title: "Результаты пользовтеля {{user}}"
     results:
         title: "Мои результаты"
-        create: "Сохранить новый результат"
+        create: "Записать результат"
+        list: "Смотреть мои результаты"
         opening_quote: "Цена открытия"
         closing_quote: "Цена закрытия"
         spent: "Потрачено"
         profit: "Прибыль"
         notes: "Заметки"
         date: "Дата"
+        image: "Картинка"
         view_image: "Смотреть картинку"
     calculate: "Посчитать"
     martingail:

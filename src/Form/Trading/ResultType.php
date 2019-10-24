@@ -17,7 +17,6 @@ class ResultType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('media_file', FileType::class)
             ->add('openingQuote', MoneyType::class, [
                 'label' => 'trading.results.opening_quote',
                 'currency' => 'USD'
@@ -36,6 +35,7 @@ class ResultType extends AbstractType
                 'label' => 'trading.results.date',
                 'widget' => 'single_text',
             ])
+            ->add('media_file', FileType::class, ['label' => 'trading.results.image'])
         ;
     }
 
