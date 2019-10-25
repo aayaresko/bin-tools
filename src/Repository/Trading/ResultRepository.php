@@ -25,25 +25,26 @@ class ResultRepository extends ServiceEntityRepository
         $builder = $this->createQueryBuilder('r');
 
         $builder
-            ->andWhere('r.user.id = userId')
-            ->setParameter('userId', $dto->userId);
+            ->where('r.user = :userId')
+            ->setParameter('userId', $dto->getUser()->getId());
 
-        if ($dto->dateFrom && $dto->dateTo) {
+        if ($dto->getDateFrom() instanceof \DateTimeInterface && $dto->getDateTo() instanceof \DateTimeInterface) {
             $builder
-                ->andWhere(
-                    $builder->expr()->between('r.date', $dto->dateFrom, $dto->dateTo)
-                );
+                ->andWhere($builder->expr()->between('r.date', ':from', ':to'))
+                ->setParameter('from', $dto->getDateFrom()->format('Y-m-d H:i:s'))
+                ->setParameter('to', $dto->getDateTo()->format('Y-m-d H:i:s'));
+
         } else {
-            if ($dto->dateFrom) {
+            if ($dto->getDateFrom() instanceof \DateTimeInterface) {
                 $builder
-                    ->andWhere('r.date => date')
-                    ->setParameter('date', $dto->dateFrom);
+                    ->andWhere('r.date => :date')
+                    ->setParameter('date', $dto->getDateFrom()->format('Y-m-d H:i:s'));
             }
 
-            if ($dto->dateTo) {
+            if ($dto->getDateTo() instanceof \DateTimeInterface) {
                 $builder
-                    ->andWhere('r.date <= date')
-                    ->setParameter('date', $dto->dateFrom);
+                    ->andWhere('r.date <= :date')
+                    ->setParameter('date', $dto->getDateTo()->format('Y-m-d H:i:s'));
             }
         }
 

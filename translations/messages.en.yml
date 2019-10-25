@@ -1,6 +1,7 @@
 save: "Save"
 created: "created at"
 close: "Close"
+filter: "Filter"
 trading:
     tools: "Tools"
     user:
@@ -18,6 +19,9 @@ trading:
         date: "Date"
         image: "Image"
         view_image: "View image"
+        filter:
+          date_from: "Date from"
+          date_to: "Date to"
     calculate: "Calculate"
     martingail:
         steps:

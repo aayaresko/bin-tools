@@ -1,6 +1,7 @@
 save: "Сохранить"
 created: "создано"
 close: "Закрыть"
+filter: "Фильтровать"
 trading:
     tools: "Инструменты"
     user:
@@ -18,6 +19,9 @@ trading:
         date: "Дата"
         image: "Картинка"
         view_image: "Смотреть картинку"
+        filter:
+          date_from: "Дата от"
+          date_to: "Дата до"
     calculate: "Посчитать"
     martingail:
         steps:

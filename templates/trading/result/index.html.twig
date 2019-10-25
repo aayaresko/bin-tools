@@ -13,6 +13,18 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-12">
+            {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
+            {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+            {{ form_row(form.dateFrom) }}
+            {{ form_row(form.dateTo) }}
+            <div class="form-group">
+                <button type="submit" class="btn-secondary btn">{{ 'filter'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="row">
         {% for item in data %}
             {% if loop.index0 is divisible by(2) %}
                 <div class="w-100"></div>

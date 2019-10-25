@@ -29,13 +29,15 @@ class ResultController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $filter->userId = $user->getId();
+            $filter->setUser($user);
             $data = $repository->filterByDto($filter);
         } else {
             $data = $repository->findBy(compact('user'));
         }
 
-        return $this->render('trading/result/index.html.twig', compact('data'));
+        $form = $form->createView();
+
+        return $this->render('trading/result/index.html.twig', compact('data', 'form'));
     }
 
     public function indexByUser(User $user, Request $request): Response
@@ -55,7 +57,9 @@ class ResultController extends AbstractController
             $data = $repository->findBy(compact('user'));
         }
 
-        return $this->render('trading/result/index_by_user.html.twig', compact('data', 'user'));
+        $form = $form->createView();
+
+        return $this->render('trading/result/index_by_user.html.twig', compact('data', 'user', 'form'));
     }
 
     public function create(Request $request, ImageProcessor $imageProcessor): Response

@@ -13,8 +13,14 @@ class ResultsFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateFrom', DateType::class, ['label' => 'trading.results.filter.date_from'])
-            ->add('dateTo', DateType::class, ['label' => 'trading.results.filter.date_to'])
+            ->add('dateFrom', DateType::class, [
+                'label' => 'trading.results.date',
+                'widget' => 'single_text',
+            ])
+            ->add('dateTo', DateType::class, [
+                'label' => 'trading.results.filter.date_to',
+                'widget' => 'single_text',
+            ])
         ;
     }
 
