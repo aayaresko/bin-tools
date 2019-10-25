@@ -2,6 +2,7 @@ save: "Save"
 created: "created at"
 close: "Close"
 filter: "Filter"
+no_data: "No data"
 trading:
     tools: "Tools"
     user:

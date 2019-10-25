@@ -2,6 +2,7 @@ save: "Сохранить"
 created: "создано"
 close: "Закрыть"
 filter: "Фильтровать"
+no_data: "Ничего не найдено"
 trading:
     tools: "Инструменты"
     user:

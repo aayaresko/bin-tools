@@ -25,6 +25,13 @@
         </div>
     </div>
     <div class="row">
+        {% if data is empty %}
+            <div class="col-12">
+                <p class="text-center">
+                    {{ 'no_data'|trans }}
+                </p>
+            </div>
+        {% endif %}
         {% for item in data %}
             {% if loop.index0 is divisible by(2) %}
                 <div class="w-100"></div>

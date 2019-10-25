@@ -55,4 +55,9 @@ class StatisticController extends AbstractController
             ]
         );
     }
+
+    public function userProfitability(Request $request): Response
+    {
+
+    }
 }

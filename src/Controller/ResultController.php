@@ -30,6 +30,7 @@ class ResultController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $filter->setUser($user);
+
             $data = $repository->filterByDto($filter);
         } else {
             $data = $repository->findBy(compact('user'));
@@ -51,7 +52,8 @@ class ResultController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $filter->userId = $user->getId();
+            $filter->setUser($user);
+
             $data = $repository->filterByDto($filter);
         } else {
             $data = $repository->findBy(compact('user'));
