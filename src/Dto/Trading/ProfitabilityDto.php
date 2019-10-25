@@ -10,4 +10,5 @@ class ProfitabilityDto
     public $betSizeInPercentage = 4;
     public $profitableBetsPercentage = 60;
     public $profitPerBetPercentage = 80;
+    public $totalBetsPerMonth;
 }

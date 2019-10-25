@@ -3,6 +3,7 @@ created: "created at"
 close: "Close"
 filter: "Filter"
 no_data: "No data"
+calculate: "Calculate"
 trading:
     tools: "Tools"
     user:
@@ -21,8 +22,8 @@ trading:
         image: "Image"
         view_image: "View image"
         filter:
-          date_from: "Date from"
-          date_to: "Date to"
+            date_from: "Date from"
+            date_to: "Date to"
     calculate: "Calculate"
     martingail:
         steps:
@@ -39,6 +40,10 @@ trading:
                 bigger: "bigger"
                 lower: "lower"
     profitability:
+        user:
+            title: "User profitability"
+            bets_per_period: "The user '{{user}}' has made {{totalBets}} for the period"
+            profitability_for_period: "Users '{{user}}' accuracy fot the period is {{profitability}}%"
         title: "Trading profitability calculation"
         deposit_amount: "Deposit amount"
         number_of_days: "Number of trading days"

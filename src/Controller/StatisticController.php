@@ -4,8 +4,13 @@ namespace App\Controller;
 
 use App\Dto\StepsDto;
 use App\Dto\Trading\ProfitabilityDto;
+use App\Dto\Trading\ResultsFilterDto;
+use App\Entity\Trading\Result;
+use App\Entity\User;
 use App\Form\StepsType;
 use App\Form\Trading\ProfitabilityType;
+use App\Form\Trading\ResultsFilterType;
+use App\Repository\Trading\ResultRepository;
 use App\Service\StepsCounter;
 use App\Service\TradingProfitabilityCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,8 +61,24 @@ class StatisticController extends AbstractController
         );
     }
 
-    public function userProfitability(Request $request): Response
+    public function userTradingProfitability(User $user, Request $request): Response
     {
+        /** @var ResultRepository $repository */
+        $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
 
+        $filter = new ResultsFilterDto();
+        $form = $this->createForm(ResultsFilterType::class, $filter);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $filter->setUser($user);
+
+            $data = $repository->calculateUserProfitabilityFromDto($filter);
+        }
+
+        $form = $form->createView();
+
+        return $this->render('trading/profitability/user_calculation.html.twig', compact('data', 'form', 'user'));
     }
 }

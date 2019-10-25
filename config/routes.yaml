@@ -44,9 +44,17 @@ steps:
     requirements:
         _locale: en|ru
 
-profitability:
+trading_profitability:
     path: /{_locale}/trading/profitability
     controller: App\Controller\StatisticController::tradingProfitability
+    defaults: {_locale: en}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
+
+user_trading_profitability:
+    path: /{_locale}/trading/profitability/user/{user}
+    controller: App\Controller\StatisticController::userTradingProfitability
     defaults: {_locale: en}
     methods: [GET, POST]
     requirements:

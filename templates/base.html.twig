@@ -26,7 +26,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="toolsDropdown">
                         <a class="dropdown-item" href="{{ path('steps') }}">{{ "trading.martingail.steps.title"|trans }}</a>
-                        <a class="dropdown-item" href="{{ path('profitability') }}">{{ "trading.profitability.title"|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('trading_profitability') }}">{{ "trading.profitability.title"|trans }}</a>
                     </div>
                 </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

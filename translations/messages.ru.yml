@@ -3,6 +3,7 @@ created: "создано"
 close: "Закрыть"
 filter: "Фильтровать"
 no_data: "Ничего не найдено"
+calculate: "Посчитать"
 trading:
     tools: "Инструменты"
     user:
@@ -21,8 +22,8 @@ trading:
         image: "Картинка"
         view_image: "Смотреть картинку"
         filter:
-          date_from: "Дата от"
-          date_to: "Дата до"
+            date_from: "Дата от"
+            date_to: "Дата до"
     calculate: "Посчитать"
     martingail:
         steps:
@@ -39,6 +40,10 @@ trading:
                 bigger: "больше"
                 lower: "меньше"
     profitability:
+        user:
+            title: "Прибыльность пользователя"
+            bets_per_period: "Пользователь '{{user}}' сделал {{totalBets}} ставок за выбраный период"
+            profitability_for_period: "Точность ставок пользователя '{{user}}' за выбраный период составляет {{profitability}}%"
         title: "Рассчёт прибыльности 'торговли'"
         deposit_amount: "Размер депозита"
         number_of_days: "Количество дней"

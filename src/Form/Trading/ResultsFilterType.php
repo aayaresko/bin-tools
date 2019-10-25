@@ -14,7 +14,7 @@ class ResultsFilterType extends AbstractType
     {
         $builder
             ->add('dateFrom', DateType::class, [
-                'label' => 'trading.results.date',
+                'label' => 'trading.results.filter.date_from',
                 'widget' => 'single_text',
             ])
             ->add('dateTo', DateType::class, [
