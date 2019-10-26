@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
+    const DEFAULT_PAGE_SIZE = 2;
+
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         /** @var UserRepository $repository */
@@ -18,7 +20,7 @@ class UserController extends AbstractController
 
         $page = $request->query->getInt('page', 1);
         $queryBuilder = $repository->getEnabledQueryBuilder();
-        $pagination = $paginator->paginate($queryBuilder, $page, 10);
+        $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
 
         return $this->render('user/index.html.twig', compact('pagination'));
     }

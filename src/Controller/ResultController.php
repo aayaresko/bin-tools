@@ -9,6 +9,7 @@ use App\Form\Trading\ResultsFilterType;
 use App\Form\Trading\CreateResultType;
 use App\Repository\Trading\ResultRepository;
 use App\Service\ImageProcessor;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ResultController extends AbstractController
 {
-    public function index(Request $request): Response
+    const DEFAULT_PAGE_SIZE = 2;
+
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
         /** @var ResultRepository $repository */
         $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
@@ -31,17 +34,19 @@ class ResultController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $filter->setUser($user);
 
-            $data = $repository->filterByDto($filter);
+            $queryBuilder = $repository->getFilterByDtoQueryBuilder($filter);
         } else {
-            $data = $repository->findBy(compact('user'));
+            $queryBuilder = $repository->getByUserQueryBuilder($user);
         }
 
+        $page = $request->query->getInt('page', 1);
+        $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
         $form = $form->createView();
 
-        return $this->render('trading/result/index.html.twig', compact('data', 'form'));
+        return $this->render('trading/result/index.html.twig', compact('pagination', 'form'));
     }
 
-    public function indexByUser(User $user, Request $request): Response
+    public function indexByUser(User $user, PaginatorInterface $paginator, Request $request): Response
     {
         /** @var ResultRepository $repository */
         $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
@@ -54,14 +59,16 @@ class ResultController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $filter->setUser($user);
 
-            $data = $repository->filterByDto($filter);
+            $queryBuilder = $repository->getFilterByDtoQueryBuilder($filter);
         } else {
-            $data = $repository->findBy(compact('user'));
+            $queryBuilder = $repository->getByUserQueryBuilder($user);
         }
 
+        $page = $request->query->getInt('page', 1);
+        $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
         $form = $form->createView();
 
-        return $this->render('trading/result/index_by_user.html.twig', compact('data', 'user', 'form'));
+        return $this->render('trading/result/index_by_user.html.twig', compact('pagination', 'user', 'form'));
     }
 
     public function create(Request $request, ImageProcessor $imageProcessor): Response

@@ -5,6 +5,7 @@ namespace App\Repository\Trading;
 use App\Dto\Trading\ProfitabilityDto;
 use App\Dto\Trading\ResultsFilterDto;
 use App\Entity\Trading\Result;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
@@ -58,11 +59,30 @@ class ResultRepository extends ServiceEntityRepository
         return $builder;
     }
 
-    public function filterByDto(ResultsFilterDto $dto)
+
+    public function getByUserQueryBuilder(User $user): QueryBuilder
+    {
+        $builder = $this->createQueryBuilder('r');
+
+        $builder
+            ->andWhere('r.user = :userId')
+            ->setParameter('userId', $user->getId());
+
+        return $builder;
+    }
+
+    public function getFilterByDtoQueryBuilder(ResultsFilterDto $dto): QueryBuilder
     {
         $builder = $this->createQueryBuilder('r');
 
         $this->attachResultsFilterCriteria($builder, $dto);
+
+        return $builder;
+    }
+
+    public function filterByDto(ResultsFilterDto $dto)
+    {
+        $builder = $this->getFilterByDtoQueryBuilder($dto);
 
         return $builder->getQuery()->execute();
     }
