@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'users.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1>
+                {{ 'users.title'|trans }}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% if data is empty %}
+                <p class="text-center">
+                    {{ 'no_data'|trans }}
+                </p>
+            {% else %}
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>{{ 'trading.user.results.title'|trans({'{{user}}': ''}) }}</th>
+                        <th>{{ 'trading.profitability.user.title'|trans }}</th>
+                        <th>{{ 'user.registered_at'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>
+                                <a href="{{ path('results_by_user', {'user': item.id}) }}" title="{{ item }}">
+                                    {{ item }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_trading_profitability', {'user': item.id}) }}" title="{{ item }}">
+                                    {{ item }}
+                                </a>
+                            </td>
+                            <td>{{ item.createdAt|date('Y-m-d') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

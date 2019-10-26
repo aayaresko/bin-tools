@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
             <link rel="stylesheet" href="{{ asset('base.css') }}">
         {% endblock %}
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ path('index') }}">Binary options tools</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,29 +21,71 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('steps', {'_locale': app.request.locale}) }}">
-                        {{ "trading.martingail.steps.title"|trans }}
-                    </a>
+                    <a class="nav-link" href="{{ path('user_index') }}">{{ 'users.title'|trans }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('profitability', {'_locale': app.request.locale}) }}">
-                        {{ "trading.profitability.title"|trans }}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'trading.tools'|trans }}
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="toolsDropdown">
+                        <a class="dropdown-item" href="{{ path('steps') }}">{{ "trading.martingail.steps.title"|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('trading_profitability') }}">{{ "trading.profitability.title"|trans }}</a>
+                    </div>
                 </li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resultsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'trading.result.title'|trans }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="resultsDropdown">
+                            <a class="dropdown-item" href="{{ path('results_index') }}">
+                                {{ 'trading.result.list'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('result_create') }}">
+                                {{ 'trading.result.create'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('user_trading_profitability', {'user': app.user.id}) }}">
+                                {{ 'trading.result.user.title'|trans }}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
-    <div id="content" class="container-fluid">
-        {% block body %}{% endblock %}
-    </div>
-    <div class="container-fluid">
-        <hr>
-        <div class="form-group text-center">
-            <div class="col-12">
-                <p>&copy; 2017-{{ 'now'|date('Y') }} @DeathSpade</p>
+    <main role="main">
+        <div id="content" class="container-fluid">
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="form-group text-center">
+                <div class="col-12">
+                    <p>&copy; 2017-{{ 'now'|date('Y') }} @DeathSpade</p>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/jquery-3.2.1.slim.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/popper.min.js') }}"></script>

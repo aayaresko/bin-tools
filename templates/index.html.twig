@@ -1,5 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Currencies{% endblock %}
+{% block title %}
+    {{ 'info.title'|trans }}
+{% endblock %}
 
-{% block body %}Message{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-6 offset-3 text-center">
+            <h1>
+                {{ 'info.title'|trans }}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3 text-center">
+            <p class="text-muted">
+                {{ 'info.description'|trans }}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h5>{{ 'info.links.title'|trans }}:</h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{{ path('user_index') }}">
+                        {{ 'users.title'|trans }}
+                    </a>
+                    <span class="text-muted">
+                        {{ 'users.description'|trans }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ path('steps') }}">
+                        {{ 'trading.martingail.steps.title'|trans }}
+                    </a>
+                    <span class="text-muted">
+                        {{ 'trading.martingail.steps.description'|trans }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ path('trading_profitability') }}">
+                        {{ 'trading.profitability.title'|trans }}
+                    </a>
+                    <span class="text-muted">
+                        {{ 'trading.profitability.description'|trans }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ path('result_create') }}">
+                        {{ 'trading.result.title'|trans }}
+                    </a>
+                    <span class="text-muted">
+                        {{ 'trading.result.description'|trans }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
