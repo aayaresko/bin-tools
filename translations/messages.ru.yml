@@ -27,6 +27,8 @@ trading:
         date: "Дата"
         image: "Картинка"
         view_image: "Смотреть картинку"
+        user:
+            title: "Прибыльность моей торговли"
         filter:
             date_from: "Дата от"
             date_to: "Дата до"

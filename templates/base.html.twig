@@ -35,8 +35,15 @@
                             {{ 'trading.results.title'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="resultsDropdown">
-                            <a class="dropdown-item" href="{{ path('results_index') }}">{{ 'trading.results.list'|trans }}</a>
-                            <a class="dropdown-item" href="{{ path('results_create') }}">{{ 'trading.results.create'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('results_index') }}">
+                                {{ 'trading.results.list'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('results_create') }}">
+                                {{ 'trading.results.create'|trans }}
+                            </a>
+                            <a class="dropdown-item" href="{{ path('user_trading_profitability', {'user': app.user.id}) }}">
+                                {{ 'trading.results.user.title'|trans }}
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item">
