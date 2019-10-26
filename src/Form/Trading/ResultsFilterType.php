@@ -28,7 +28,7 @@ class ResultsFilterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ResultsFilterDto::class,
-            'validation_group' => 'result_filter'
+            'validation_groups' => 'result_filter'
         ]);
     }
 }

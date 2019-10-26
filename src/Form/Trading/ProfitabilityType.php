@@ -25,7 +25,7 @@ class ProfitabilityType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ProfitabilityDto::class,
-            'validation_group' => 'trading_profitability_calculation'
+            'validation_groups' => 'trading_profitability_calculation'
         ]);
     }
 }
