@@ -9,12 +9,15 @@ info:
     description: "On this website you will find various useful tools for binary options"
     links:
         title: "Here some of them"
+user:
+    index: "Users"
+    registered_at: "Registration date"
 trading:
     tools: "Tools"
     user:
         results:
             title: "{{user}} user results"
-    results:
+    result:
         title: "My results"
         description: "Here you can store each of your trading results here for fast and free access to your results and, you will be able to calculate the profitability of your trading system"
         create: "Save new result"

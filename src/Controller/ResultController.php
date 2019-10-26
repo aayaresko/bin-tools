@@ -80,7 +80,7 @@ class ResultController extends AbstractController
 
             $imageProcessor->filter($entity->getImage(), ImageProcessor::IMAGE_WIDEN, true);
 
-            return $this->redirectToRoute('results_index');
+            return $this->redirectToRoute('result_index');
         }
 
         return $this->render('trading/result/create.html.twig', ['form' => $form->createView()]);

@@ -13,15 +13,15 @@ index:
         _locale: en|ru
 
 results_index:
-    path: /{_locale}/results
+    path: /{_locale}/result
     controller: App\Controller\ResultController::index
     defaults: {_locale: en}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
 
-results_create:
-    path: /{_locale}/results/create
+result_create:
+    path: /{_locale}/result/create
     controller: App\Controller\ResultController::create
     defaults: {_locale: en}
     methods: [GET, POST]
@@ -29,7 +29,7 @@ results_create:
         _locale: en|ru
 
 results_by_user:
-    path: /{_locale}/results/{user}
+    path: /{_locale}/result/{user}
     controller: App\Controller\ResultController::indexByUser
     defaults: {_locale: en}
     methods: [GET, POST]
@@ -47,6 +47,14 @@ steps:
 trading_profitability:
     path: /{_locale}/trading/profitability
     controller: App\Controller\StatisticController::tradingProfitability
+    defaults: {_locale: en}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
+
+user_index:
+    path: /{_locale}/user
+    controller: App\Controller\UserController::index
     defaults: {_locale: en}
     methods: [GET, POST]
     requirements:

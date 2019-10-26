@@ -20,6 +20,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('user_index') }}">{{ 'user.index'|trans }}</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'trading.tools'|trans }}
@@ -32,17 +35,17 @@
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="resultsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ 'trading.results.title'|trans }}
+                            {{ 'trading.result.title'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="resultsDropdown">
                             <a class="dropdown-item" href="{{ path('results_index') }}">
-                                {{ 'trading.results.list'|trans }}
+                                {{ 'trading.result.list'|trans }}
                             </a>
-                            <a class="dropdown-item" href="{{ path('results_create') }}">
-                                {{ 'trading.results.create'|trans }}
+                            <a class="dropdown-item" href="{{ path('result_create') }}">
+                                {{ 'trading.result.create'|trans }}
                             </a>
                             <a class="dropdown-item" href="{{ path('user_trading_profitability', {'user': app.user.id}) }}">
-                                {{ 'trading.results.user.title'|trans }}
+                                {{ 'trading.result.user.title'|trans }}
                             </a>
                         </div>
                     </li>

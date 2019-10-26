@@ -14,11 +14,11 @@ class ResultsFilterType extends AbstractType
     {
         $builder
             ->add('dateFrom', DateType::class, [
-                'label' => 'trading.results.filter.date_from',
+                'label' => 'trading.result.filter.date_from',
                 'widget' => 'single_text',
             ])
             ->add('dateTo', DateType::class, [
-                'label' => 'trading.results.filter.date_to',
+                'label' => 'trading.result.filter.date_to',
                 'widget' => 'single_text',
             ])
         ;
@@ -28,7 +28,7 @@ class ResultsFilterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ResultsFilterDto::class,
-            'validation_group' => 'results_filter'
+            'validation_group' => 'result_filter'
         ]);
     }
 }

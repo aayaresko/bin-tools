@@ -18,24 +18,24 @@ class CreateResultType extends AbstractType
     {
         $builder
             ->add('openingQuote', MoneyType::class, [
-                'label' => 'trading.results.opening_quote',
+                'label' => 'trading.result.opening_quote',
                 'currency' => 'USD'
             ])
             ->add('closingQuote', MoneyType::class, [
-                'label' => 'trading.results.closing_quote',
+                'label' => 'trading.result.closing_quote',
                 'currency' => 'USD'
             ])
-            ->add('spent', IntegerType::class, ['label' => 'trading.results.spent'])
+            ->add('spent', IntegerType::class, ['label' => 'trading.result.spent'])
             ->add('profit', MoneyType::class, [
-                'label' => 'trading.results.profit',
+                'label' => 'trading.result.profit',
                 'currency' => 'USD'
             ])
-            ->add('notes', TextareaType::class, ['label' => 'trading.results.notes', 'required' => false])
+            ->add('notes', TextareaType::class, ['label' => 'trading.result.notes', 'required' => false])
             ->add('date', DateType::class, [
-                'label' => 'trading.results.date',
+                'label' => 'trading.result.date',
                 'widget' => 'single_text',
             ])
-            ->add('media_file', FileType::class, ['label' => 'trading.results.image'])
+            ->add('media_file', FileType::class, ['label' => 'trading.result.image'])
         ;
     }
 

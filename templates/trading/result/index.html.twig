@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'trading.results.title'|trans }}
+    {{ 'trading.result.title'|trans }}
 {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-12">
             <h1>
-                {{ 'trading.results.title'|trans }}
+                {{ 'trading.result.title'|trans }}
             </h1>
         </div>
     </div>
@@ -47,18 +47,18 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            {{ 'trading.results.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
-                            {{ 'trading.results.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
-                            {{ 'trading.results.profit'|trans }}: {{ item.profit }}<br/>
-                            {{ 'trading.results.spent'|trans }}: {{ item.spent }}<br/>
-                            {{ 'trading.results.notes'|trans }}: {{ item.notes }}<br/>
+                            {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
+                            {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
+                            {{ 'trading.result.profit'|trans }}: {{ item.profit }}<br/>
+                            {{ 'trading.result.spent'|trans }}: {{ item.spent }}<br/>
+                            {{ 'trading.result.notes'|trans }}: {{ item.notes }}<br/>
                         </p>
                     </div>
                     {% if item.image %}
                         {% set modalId = "modal" ~ item.id %}
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ modalId }}">
-                                {{ 'trading.results.view_image'|trans }}
+                                {{ 'trading.result.view_image'|trans }}
                             </button>
                             <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl" role="document">
