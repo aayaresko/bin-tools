@@ -4,6 +4,11 @@ close: "Close"
 filter: "Filter"
 no_data: "No data"
 calculate: "Calculate"
+info:
+    title: "Tools for binary options"
+    description: "On this website you will find various useful tools for binary options"
+    links:
+        title: "Here some of them"
 trading:
     tools: "Tools"
     user:
@@ -11,6 +16,7 @@ trading:
             title: "{{user}} user results"
     results:
         title: "My results"
+        description: "Here you can store each of your trading results here for fast and free access to your results and, you will be able to calculate the profitability of your trading system"
         create: "Save new result"
         list: "View my results"
         opening_quote: "Opening quote"
@@ -28,13 +34,14 @@ trading:
     martingail:
         steps:
             title: "Number of steps calculation"
+            descitpion: "Here you can build steps for your deposit by Martingail risk management system"
             deposit_amount: "Deposit amount"
             number: "Number of steps"
             first_step_percent: "First step percent"
             calculate: "Calculate"
             label: "Build steps for deposit by Martingail"
-            list_title: "Okay, so length steps for deposit amount are"
-            info: "Total spend will be totalSpend. That is word than initial deposit."
+            list_title: "Okay, so {{length}} steps for deposit {{amount}} are"
+            info: "Total spend will be {{totalSpend}}. That is {{word}} than initial deposit."
             step: "step"
             amount:
                 bigger: "bigger"
@@ -45,6 +52,7 @@ trading:
             bets_per_period: "The user '{{user}}' has made {{totalBets}} for the period"
             profitability_for_period: "Users '{{user}}' accuracy fot the period is {{profitability}}%"
         title: "Trading profitability calculation"
+        description: "Here you can calculate what will be the approximate profitability of you trading by specifying your trading system data, statistics and deposit amount"
         deposit_amount: "Deposit amount"
         number_of_days: "Number of trading days"
         number_of_bets_per_day: "Number of bets per day"
