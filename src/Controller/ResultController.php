@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ResultController extends AbstractController
 {
-    const DEFAULT_PAGE_SIZE = 2;
+    const DEFAULT_PAGE_SIZE = 10;
 
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
@@ -82,12 +82,15 @@ class ResultController extends AbstractController
         $entity->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($entity, $form->isValid());exit();
             $em->persist($entity);
             $em->flush();
 
-            $imageProcessor->filter($entity->getImage(), ImageProcessor::IMAGE_WIDEN, true);
+            if ($entity->getImage()) {
+                $imageProcessor->filter($entity->getImage(), ImageProcessor::IMAGE_WIDEN, true);
+            }
 
-            return $this->redirectToRoute('result_index');
+            return $this->redirectToRoute('results_index');
         }
 
         return $this->render('trading/result/create.html.twig', ['form' => $form->createView()]);

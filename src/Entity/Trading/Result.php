@@ -52,7 +52,7 @@ class Result
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $notes;
 
@@ -66,7 +66,7 @@ class Result
     /**
      * @var mixed
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -142,7 +142,7 @@ class Result
         return $this->notes;
     }
 
-    public function setNotes(string $notes): self
+    public function setNotes(?string $notes): self
     {
         $this->notes = $notes;
 
@@ -154,7 +154,7 @@ class Result
         return $this->image;
     }
 
-    public function setImage(string $image = null): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

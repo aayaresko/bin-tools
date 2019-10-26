@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
-    const DEFAULT_PAGE_SIZE = 2;
+    const DEFAULT_PAGE_SIZE = 10;
 
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
