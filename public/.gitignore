@@ -1,4 +1,3 @@
 ###> liip/imagine-bundle ###
-/public/media/cache/
-/public/media/results/
+/media
 ###< liip/imagine-bundle ###
