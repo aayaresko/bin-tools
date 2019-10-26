@@ -28,6 +28,11 @@ App\Dto\StepsDto:
                 invalidMessage: steps.first_step_percent.invalid
                 groups: [steps_for_deposit]
 
+App\Dto\Trading\ProfitabilityDto:
+    constraints:
+        - App\Validator\Constraints\ContainsProfitabilityDro:
+            groups: [trading_profitability_calculation]
+
 App\Entity\Trading\Result:
     properties:
         openingQuote:
