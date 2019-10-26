@@ -2,15 +2,15 @@
 
 namespace App\Service;
 
-use App\Dto\TradingProfitabilityDto;
+use App\Dto\Trading\ProfitabilityDto;
 
 class TradingProfitabilityCalculator
 {
     /**
-     * @param TradingProfitabilityDto $dto
+     * @param ProfitabilityDto $dto
      * @return float
      */
-    public function getTotalEarnings(TradingProfitabilityDto $dto)
+    public function getTotalEarnings(ProfitabilityDto $dto)
     {
         $betSize = $dto->depositAmount / 100 * $dto->betSizeInPercentage;
         $winningBets = $dto->profitableBetsPercentage / 100 * $dto->numberOfBetsPerDay * $dto->numberOfDays;

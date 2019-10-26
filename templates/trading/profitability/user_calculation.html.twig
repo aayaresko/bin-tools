@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'trading.profitability.user.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1>
+                {{ 'trading.profitability.user.title'|trans }}
+            </h1>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-12">
+            {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
+            {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+            {{ form_row(form.dateFrom) }}
+            {{ form_row(form.dateTo) }}
+            <div class="form-group">
+                <button type="submit" class="btn-secondary btn">{{ 'calculate'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {% if data is defined and data.profitableBetsPercentage %}
+        <hr/>
+        <div class="row">
+            <div class="col-12">
+                <p class="lead">
+                    {{ 'trading.profitability.user.bets_per_period'|trans({'{{user}}': user, '{{totalBets}}': data.totalBetsPerMonth}) }}.<br/>
+                    {{ 'trading.profitability.user.profitability_for_period'|trans({'{{user}}': user, '{{profitability}}': data.profitableBetsPercentage}) }}
+                </p>
+            </div>
+        </div>
+        <hr/>
+    {% endif %}
+{% endblock %}

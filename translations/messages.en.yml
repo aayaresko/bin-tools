@@ -1,23 +1,66 @@
+save: "Save"
+created: "created at"
+close: "Close"
+filter: "Filter"
+no_data: "No data"
+calculate: "Calculate"
+info:
+    title: "Tools for binary options"
+    description: "On this website you will find various useful tools for binary options"
+    links:
+        title: "Here some of them"
+users:
+    title: "Users"
+    description: "Here you can see all users in the system"
+user:
+    registered_at: "Registration date"
 trading:
+    tools: "Tools"
+    user:
+        results:
+            title: "{{user}} user results"
+    result:
+        title: "My results"
+        description: "Here you can store each of your trading results here for fast and free access to your results and, you will be able to calculate the profitability of your trading system"
+        create: "Save new result"
+        list: "View my results"
+        opening_quote: "Opening quote"
+        closing_quote: "Closing quote"
+        spent: "Spent"
+        profit: "Profit"
+        notes: "Notes"
+        date: "Date"
+        image: "Image"
+        view_image: "View image"
+        user:
+            title: "Profitability of my trading"
+        filter:
+            date_from: "Date from"
+            date_to: "Date to"
     calculate: "Calculate"
     martingail:
         steps:
             title: "Number of steps calculation"
+            descitpion: "Here you can build steps for your deposit by Martingail risk management system"
             deposit_amount: "Deposit amount"
             number: "Number of steps"
             first_step_percent: "First step percent"
             calculate: "Calculate"
             label: "Build steps for deposit by Martingail"
-            list_title: "Okay, so length steps for deposit amount are"
-            info: "Total spend will be totalSpend. That is word than initial deposit."
+            list_title: "Okay, so {{length}} steps for deposit {{amount}} are"
+            info: "Total spend will be {{totalSpend}}. That is {{word}} than initial deposit."
             step: "step"
             amount:
                 bigger: "bigger"
                 lower: "lower"
     profitability:
+        user:
+            title: "User profitability"
+            bets_per_period: "The user '{{user}}' has made {{totalBets}} for the period"
+            profitability_for_period: "Users '{{user}}' accuracy fot the period is {{profitability}}%"
         title: "Trading profitability calculation"
+        description: "Here you can calculate what will be the approximate profitability of you trading by specifying your trading system data, statistics and deposit amount"
         deposit_amount: "Deposit amount"
-        label: "Calculate your trading profitability"
         number_of_days: "Number of trading days"
         number_of_bets_per_day: "Number of bets per day"
         bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"
