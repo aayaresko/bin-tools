@@ -24,15 +24,15 @@
             {{ form_end(form) }}
         </div>
     </div>
-    <div class="row">
-        {% if data is empty %}
+    <div class="row form-group">
+        {% if pagination is empty %}
             <div class="col-12">
                 <p class="text-center">
                     {{ 'no_data'|trans }}
                 </p>
             </div>
         {% endif %}
-        {% for item in data %}
+        {% for item in pagination %}
             {% if loop.index0 is divisible by(3) %}
                 <div class="w-100"></div>
                 <br/>
@@ -66,4 +66,13 @@
             </div>
         {% endfor %}
     </div>
+    {% if pagination is not empty %}
+        <div class="row">
+            <div class="col-12">
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

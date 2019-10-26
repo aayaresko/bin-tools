@@ -1,0 +1,79 @@
+App\Dto\StepsDto:
+    properties:
+        depositAmount:
+            - NotBlank:
+                message: steps.deposit_amount.blank
+                groups: [steps_for_deposit]
+            - GreaterThan:
+                value: 10
+                message: steps.deposit_amount.invalid
+                groups: [steps_for_deposit]
+        number:
+            - NotBlank:
+                message: steps.number.blank
+                groups: [steps_for_deposit]
+            - GreaterThan:
+                value: 0
+                message: steps.number.invalid
+                groups: [steps_for_deposit]
+        firstStepPercent:
+            - NotBlank:
+                message: steps.first_step_percent.blank
+                groups: [steps_for_deposit]
+            - Range:
+                min: 1
+                max: 100
+                minMessage: steps.first_step_percent.short
+                maxMessage: steps.first_step_percent.long
+                invalidMessage: steps.first_step_percent.invalid
+                groups: [steps_for_deposit]
+
+App\Dto\Trading\ProfitabilityDto:
+    constraints:
+        - App\Validator\Constraints\ContainsProfitabilityDro:
+            groups: [trading_profitability_calculation]
+            tradingIsNotProfitableMessage: trading.not_profitable
+            betSizeIsToBigMessage: trading.extremely_risky
+
+App\Entity\Trading\Result:
+    properties:
+        openingQuote:
+            - NotBlank:
+                message: trading.result.opening_quote.blank
+                groups: [create_trading_result]
+            - GreaterThan:
+                value: 0
+                message: trading.result.opening_quote.invalid
+                groups: [create_trading_result]
+        closingQuote:
+            - NotBlank:
+                message: trading.result.closing_quote.blank
+                groups: [create_trading_result]
+            - GreaterThan:
+                value: 0
+                message: trading.result.closing_quote.invalid
+                groups: [create_trading_result]
+        spent:
+            - NotBlank:
+                message: trading.result.spent.blank
+                groups: [create_trading_result]
+            - GreaterThan:
+                value: 0
+                message: trading.result.spent.invalid
+                groups: [create_trading_result]
+        profit:
+            - NotBlank:
+                message: trading.result.profit.blank
+                groups: [create_trading_result]
+            - GreaterThanOrEqual:
+                value: 0
+                message: trading.result.profit.invalid
+                groups: [create_trading_result]
+        date:
+            - NotBlank:
+                message: trading.result.date.blank
+                groups: [create_trading_result]
+            - Date:
+                message: trading.result.date.invalid
+                groups: [create_trading_result]
+

@@ -35,7 +35,7 @@ class CreateResultType extends AbstractType
                 'label' => 'trading.result.date',
                 'widget' => 'single_text',
             ])
-            ->add('media_file', FileType::class, ['label' => 'trading.result.image'])
+            ->add('media_file', FileType::class, ['label' => 'trading.result.image', 'required' => false])
         ;
     }
 
@@ -43,7 +43,7 @@ class CreateResultType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Result::class,
-            'validation_group' => 'create_trading_result'
+            'validation_groups' => 'create_trading_result'
         ]);
     }
 }

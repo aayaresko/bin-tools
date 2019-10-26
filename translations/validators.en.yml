@@ -10,3 +10,22 @@ steps:
         short: "The start percent from your deposit is to short it should be at least {{ limit }}"
         long: "The start percent from your deposit is to long it should be less than {{ limit }}"
         invalid: "The start percent from your deposit is invalid"
+trading:
+    not_profitable: "With {{profitability}}% profitability your trading will not be profitable."
+    extremely_risky: "Making {{betsPerDay}} bets per day with the bet size {{betSize}}% is extremely risky."
+    result:
+        opening_quote:
+            blank: "Please provide opening quite"
+            invalid: "Opening quite is invalid. The value should be greater than zero."
+        closing_quote:
+            blank: "Please provide closing quite"
+            invalid: "Closing quite is invalid. The value should be greater than zero."
+        spent:
+            blank: "Please provide the amount spent on the trade"
+            invalid: "The amount spent is invalid"
+        profit:
+            blank: "Please provide profit amount from the deal"
+            invalid: "Profit amount is invalid. The value should be greater than or equal to zero."
+        date:
+            blank: "Please provide date"
+            invalid: "The date is invalid."
