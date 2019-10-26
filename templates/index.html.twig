@@ -24,6 +24,14 @@
             <h5>{{ 'info.links.title'|trans }}:</h5>
             <ul class="list-group">
                 <li class="list-group-item">
+                    <a href="{{ path('user_index') }}">
+                        {{ 'users.title'|trans }}
+                    </a>
+                    <span class="text-muted">
+                        {{ 'users.description'|trans }}
+                    </span>
+                </li>
+                <li class="list-group-item">
                     <a href="{{ path('steps') }}">
                         {{ 'trading.martingail.steps.title'|trans }}
                     </a>
