@@ -32,6 +32,8 @@ App\Dto\Trading\ProfitabilityDto:
     constraints:
         - App\Validator\Constraints\ContainsProfitabilityDro:
             groups: [trading_profitability_calculation]
+            tradingIsNotProfitableMessage: trading.not_profitable
+            betSizeIsToBigMessage: trading.extremely_risky
 
 App\Entity\Trading\Result:
     properties:
