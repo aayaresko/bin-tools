@@ -14,43 +14,49 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {% if data is empty %}
+            {% if pagination is empty %}
                 <p class="text-center">
                     {{ 'no_data'|trans }}
                 </p>
             {% else %}
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>{{ 'trading.user.results.title'|trans({'{{user}}': ''}) }}</th>
-                        <th>{{ 'trading.profitability.user.title'|trans }}</th>
-                        <th>{{ 'user.registered_at'|trans }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in data %}
+                <div class="form-group">
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
-                            <th scope="row">{{ item.id }}</th>
-                            <td>{{ item }}</td>
-                            <td>{{ item.email }}</td>
-                            <td>
-                                <a href="{{ path('results_by_user', {'user': item.id}) }}" title="{{ item }}">
-                                    {{ item }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('user_trading_profitability', {'user': item.id}) }}" title="{{ item }}">
-                                    {{ item }}
-                                </a>
-                            </td>
-                            <td>{{ item.createdAt|date('Y-m-d') }}</td>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>{{ 'trading.user.results.title'|trans({'{{user}}': ''}) }}</th>
+                            <th>{{ 'trading.profitability.user.title'|trans }}</th>
+                            <th>{{ 'user.registered_at'|trans }}</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for item in pagination %}
+                            <tr>
+                                <th scope="row">{{ item.id }}</th>
+                                <td>{{ item }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>
+                                    <a href="{{ path('results_by_user', {'user': item.id}) }}" title="{{ item }}">
+                                        {{ item }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('user_trading_profitability', {'user': item.id}) }}" title="{{ item }}">
+                                        {{ item }}
+                                    </a>
+                                </td>
+                                <td>{{ item.createdAt|date('Y-m-d') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
             {% endif %}
         </div>
     </div>
