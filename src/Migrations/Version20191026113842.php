@@ -33,6 +33,6 @@ final class Version20191026113842 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE result CHANGE notes notes LONGTEXT NOT NULL COLLATE utf8mb4_unicode_ci');
-        //$this->addSql('ALTER TABLE result CHANGE image image VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
+        $this->addSql('ALTER TABLE result CHANGE image image VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }
