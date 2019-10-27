@@ -9,13 +9,16 @@ use Liip\ImagineBundle\Imagine\Filter\FilterManager;
 
 class ImageProcessor
 {
-    const IMAGE_NORMAL    = 'normal';
-    const IMAGE_ICON      = 'icon';
-    const IMAGE_THUMBNAIL = 'thumbnail';
+    const RESULT_IMAGE_NORMAL    = 'normal';
+    const RESULT_IMAGE_ICON      = 'icon';
+    const RESULT_IMAGE_THUMBNAIL = 'thumbnail';
 
-    const IMAGE_ICON_WIDEN      = 'result_image_icon_widen';
-    const IMAGE_THUMBNAIL_WIDEN = 'result_image_thumbnail_widen';
-    const IMAGE_WIDEN           = 'result_image_widen';
+    const USER_PHOTO_ICON_WIDEN        = 'user_photo_icon_widen';
+    const USER_PHOTO_THUMBNAIL_WIDEN   = 'user_photo_thumbnail_widen';
+    const USER_PHOTO_WIDEN             = 'user_photo_widen';
+    const RESULT_IMAGE_ICON_WIDEN      = 'result_image_icon_widen';
+    const RESULT_IMAGE_THUMBNAIL_WIDEN = 'result_image_thumbnail_widen';
+    const RESULT_IMAGE_WIDEN           = 'result_image_widen';
 
     /**
      * @var DataManager
@@ -65,7 +68,7 @@ class ImageProcessor
      *
      * @return BinaryInterface
      */
-    public function filter(string $imagePath, string $filter = self::IMAGE_WIDEN, bool $shouldStore = false): BinaryInterface
+    public function filter(string $imagePath, string $filter = self::RESULT_IMAGE_WIDEN, bool $shouldStore = false): BinaryInterface
     {
         /** @var FileBinaryInterface $binary */
         $binary = $this->dataManager->find($filter, $imagePath);

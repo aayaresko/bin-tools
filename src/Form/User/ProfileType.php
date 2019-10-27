@@ -5,6 +5,7 @@ namespace App\Form\User;
 use FOS\UserBundle\Form\Type\ProfileFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProfileType extends AbstractType
@@ -16,6 +17,8 @@ class ProfileType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('isVisible', CheckboxType::class, ['label' => 'user.is_visible', 'required' => false]);
+        $builder
+            ->add('isVisible', CheckboxType::class, ['label' => 'user.is_visible', 'required' => false])
+            ->add('mediaFile', FileType::class, ['label' => 'user.profile.photo', 'required' => false]);
     }
 }
