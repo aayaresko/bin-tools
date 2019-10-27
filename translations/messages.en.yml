@@ -17,6 +17,7 @@ users:
     description: "Here you can see all users in the system"
 user:
     profile:
+        photo: "My profile photo"
         show: "My profile"
     is_visible: "Is my profile visible in the users list?"
     registered_at: "Registration date"

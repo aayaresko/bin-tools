@@ -4,17 +4,21 @@ namespace App\Entity;
 
 use App\Entity\Trading\Result;
 use App\Helper\HasCreatedAtTrait;
+use App\Helper\HasMediaFileTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @Vich\Uploadable
  */
 class User extends BaseUser
 {
-    use HasCreatedAtTrait;
+    use HasCreatedAtTrait, HasMediaFileTrait;
 
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
@@ -28,17 +32,31 @@ class User extends BaseUser
     protected $id = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Trading\Result", mappedBy="user")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=150, nullable=true)
      */
-    private $results;
+    private $photo;
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="user_media", fileNameProperty="photo")
+     */
+    private $mediaFile;
 
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=false)
      */
     private $visible = true;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trading\Result", mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $results;
 
     /**
      * User constructor.
@@ -55,6 +73,45 @@ class User extends BaseUser
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     *
+     * @return User
+     */
+    public function setPhoto(string $photo = null): User
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return $this->visible;
+    }
+
+    /**
+     * @param bool $visible
+     * @return User
+     */
+    public function setIsVisible(bool $visible): self
+    {
+        $this->visible = $visible;
+
+        return $this;
     }
 
     /**
@@ -78,25 +135,6 @@ class User extends BaseUser
             $this->results->add($result);
             $result->setUser($this);
         }
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isVisible(): bool
-    {
-        return $this->visible;
-    }
-
-    /**
-     * @param bool $visible
-     * @return User
-     */
-    public function setIsVisible(bool $visible): self
-    {
-        $this->visible = $visible;
 
         return $this;
     }

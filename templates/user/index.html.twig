@@ -20,12 +20,13 @@
                 </p>
             {% else %}
                 <div class="form-group">
-                    <table class="table table-bordered">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Username</th>
                             <th>Email</th>
+                            <th>{{ 'user.profile.photo'|trans }}</th>
                             <th>{{ 'trading.user.results.title'|trans({'{{user}}': ''}) }}</th>
                             <th>{{ 'trading.profitability.user.title'|trans }}</th>
                             <th>{{ 'user.registered_at'|trans }}</th>
@@ -37,6 +38,11 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <td>{{ item }}</td>
                                 <td>{{ item.email }}</td>
+                                <td>
+                                    {% if item.photo %}
+                                        <img src="{{ asset(item.photo) | imagine_filter('user_photo_thumbnail_widen') }}" class="card-img-top" />
+                                    {% endif %}
+                                </td>
                                 <td>
                                     <a href="{{ path('results_by_user', {'user': item.id}) }}" title="{{ item }}">
                                         {{ item }}
