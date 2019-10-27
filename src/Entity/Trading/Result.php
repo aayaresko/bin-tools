@@ -2,10 +2,12 @@
 
 namespace App\Entity\Trading;
 
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Helper\HasCreatedAtTrait;
 use App\Helper\HasMediaFileTrait;
 use App\Helper\HasUserTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -50,7 +52,7 @@ class Result
     private $profit = 0.00;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      */
@@ -64,7 +66,7 @@ class Result
     private $user;
 
     /**
-     * @var mixed
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -83,6 +85,18 @@ class Result
      * @ORM\Column(type="datetime")
      */
     private $date;
+
+    /**
+     * @var mixed
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="results")
+     */
+    private $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -169,6 +183,38 @@ class Result
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     * @return Result
+     */
+    public function setTags($tags): self
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @param Tag $tag
+     * @return Result
+     */
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
 
         return $this;
     }

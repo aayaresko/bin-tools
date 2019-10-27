@@ -48,7 +48,7 @@ class User extends BaseUser
     /**
      * @var bool
      *
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="boolean", nullable=false, options={"default" : 1})
      */
     private $visible = true;
 
