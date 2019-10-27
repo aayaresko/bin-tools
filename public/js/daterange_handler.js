@@ -4,12 +4,12 @@ $(document).ready(function() {
 
     start.datepicker({
         format: 'dd.mm.yyyy',
-        language: '{{ app.request.locale }}'
+        language: locale
     });
 
     end.datepicker({
         format: 'dd.mm.yyyy',
-        language: '{{ app.request.locale }}'
+        language: locale
     });
 
     $('#for-a-month').on('click', function (event) {
@@ -40,9 +40,7 @@ $(document).ready(function() {
         var endDate = new Date();
 
         endDate.setDate(1);
-
         endDate.setMonth(endDate.getMonth() - endMonth);
-
         start.datepicker('setDate', endDate);
         end.datepicker('setDate', startDate);
     }
