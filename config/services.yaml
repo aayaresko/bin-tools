@@ -39,3 +39,6 @@ services:
             - '@liip_imagine.data.manager'
             - '@liip_imagine.filter.manager'
             - '%kernel.project_dir%'
+    App\Form\User\ProfileType:
+        tags:
+            - { name: form.type }

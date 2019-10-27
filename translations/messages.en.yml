@@ -1,3 +1,4 @@
+edit: "Edit"
 save: "Save"
 created: "created at"
 close: "Close"
@@ -15,6 +16,9 @@ users:
     title: "Users"
     description: "Here you can see all users in the system"
 user:
+    profile:
+        show: "My profile"
+    is_visible: "Is my profile visible in the users list?"
     registered_at: "Registration date"
 trading:
     tools: "Tools"

@@ -25,8 +25,10 @@ class UserRepository extends ServiceEntityRepository
         $builder = $this->createQueryBuilder('u');
 
         $builder
-            ->andWhere('u.enabled = :value')
-            ->setParameter('value', true);
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.visible = :visible')
+            ->setParameter('enabled', true)
+            ->setParameter('visible', true);
 
         return $builder;
     }
