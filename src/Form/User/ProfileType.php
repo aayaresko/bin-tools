@@ -16,6 +16,6 @@ class ProfileType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('isVisible', CheckboxType::class, ['label' => 'user.is_visible']);
+        $builder->add('isVisible', CheckboxType::class, ['label' => 'user.is_visible', 'required' => false]);
     }
 }
