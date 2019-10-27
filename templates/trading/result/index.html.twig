@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row form-group">
-        <div class="col-md-6">
+        <div class="col-12">
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
             <div class="input-group" id="datepicker">
@@ -102,5 +102,8 @@
 {% endblock %}
 
 {% block customjavascript %}
+    <script type="text/javascript">
+        var locale = '{{ app.request.locale }}'
+    </script>
     <script type="text/javascript" src="{{ asset('js/daterange_handler.js') }}" ></script>
 {% endblock %}

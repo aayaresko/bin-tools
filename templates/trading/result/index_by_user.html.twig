@@ -88,5 +88,8 @@
 {% endblock %}
 
 {% block customjavascript %}
+    <script type="text/javascript">
+        var locale = '{{ app.request.locale }}'
+    </script>
     <script type="text/javascript" src="{{ asset('js/daterange_handler.js') }}" ></script>
 {% endblock %}
