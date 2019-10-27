@@ -8,6 +8,7 @@
         <link rel="icon" href="{{ asset('favicon.ico') }}">
         <title>{% block title %}Binary options tools{% endblock %}</title>
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('base.css') }}">
         {% endblock %}
@@ -91,6 +92,8 @@
     </footer>
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap-datepicker/locales/bootstrap-datepicker.' ~ app.request.locale ~ '.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/popper.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- Yandex.Metrika counter -->
@@ -107,6 +110,8 @@
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/55949155" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
+    {% endblock %}
+    {% block customjavascript %}
     {% endblock %}
     </body>
 </html>

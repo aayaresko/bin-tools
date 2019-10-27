@@ -21,3 +21,14 @@
         </div>
     </div>
 {% endblock %}
+
+{% block customjavascript %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'dd.mm.yyyy',
+                language: '{{ app.request.locale }}'
+            });
+        });
+    </script>
+{% endblock %}
