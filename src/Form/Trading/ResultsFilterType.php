@@ -16,10 +16,22 @@ class ResultsFilterType extends AbstractType
             ->add('dateFrom', DateType::class, [
                 'label' => 'trading.result.filter.date_from',
                 'widget' => 'single_text',
+                'format' => 'dd.mm.yyyy',
+                'attr' => [
+                    'class' => 'input-sm',
+                    'name' => 'start',
+                    'autocomplete' => 'off'
+                ],
             ])
             ->add('dateTo', DateType::class, [
                 'label' => 'trading.result.filter.date_to',
                 'widget' => 'single_text',
+                'format' => 'dd.mm.yyyy',
+                'attr' => [
+                    'class' => 'input-sm',
+                    'name' => 'end',
+                    'autocomplete' => 'off'
+                ],
             ])
         ;
     }

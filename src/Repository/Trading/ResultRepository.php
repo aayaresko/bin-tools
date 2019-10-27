@@ -119,6 +119,13 @@ class ResultRepository extends ServiceEntityRepository
         }
 
         $data->totalBetsPerMonth = $unprofitable + $profitable;
+
+        if (0 === $profitable || 0 === $data->totalBetsPerMonth) {
+            $data->profitableBetsPercentage = 0;
+
+            return $data;
+        }
+
         $data->profitableBetsPercentage = round(($profitable * 100) / $data->totalBetsPerMonth, 2);
 
         return $data;

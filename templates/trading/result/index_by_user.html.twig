@@ -16,11 +16,21 @@
         <div class="col-12">
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-            {{ form_row(form.dateFrom) }}
-            {{ form_row(form.dateTo) }}
-            <div class="form-group">
-                <button type="submit" class="btn-secondary btn">{{ 'filter'|trans }}</button>
+            <div class="input-group" id="datepicker">
+                <div class="input-group-prepend">
+                    {{ form_widget(form.dateFrom) }}
+                    <span class="input-group-text">{{ 'range.to'|trans }}</span>
+                </div>
+                {{ form_widget(form.dateTo) }}
             </div>
+
+            <button type="submit" class="btn-secondary btn">{{ 'search'|trans }}</button>
+
+            <a href="#" id="for-a-month" class="btn-secondary btn ml-1">{{ 'range.month'|trans }}</a>
+            <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
+            <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
+            <a href="#" id="reset" class="btn-success btn ml-1">{{ 'reset'|trans }}</a>
+
             {{ form_end(form) }}
         </div>
     </div>
@@ -75,4 +85,8 @@
             </div>
         </div>
     {% endif %}
+{% endblock %}
+
+{% block customjavascript %}
+    <script type="text/javascript" src="{{ asset('js/daterange_handler.js') }}" ></script>
 {% endblock %}

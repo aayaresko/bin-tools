@@ -7,6 +7,13 @@ no_data: "No data"
 calculate: "Calculate"
 label_previous: "Previews"
 label_next: "Next"
+reset: "Reset"
+search: "Search"
+range:
+    to: "TO"
+    month: "For month"
+    year: "For a year"
+    half_a_year: "For a half of a year"
 info:
     title: "Tools for binary options"
     description: "On this website you will find various useful tools for binary options"
