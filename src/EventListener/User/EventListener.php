@@ -1,12 +1,12 @@
 <?php
 
-namespace App\EventListener;
+namespace App\EventListener\User;
 
-use App\Entity\Trading\Result;
+use App\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 
-class ResultEventListener
+class EventListener
 {
     /**
      * @var CacheManager
@@ -24,24 +24,24 @@ class ResultEventListener
     }
 
     /**
-     * @param Result $entity
+     * @param User $entity
      * @param LifecycleEventArgs $args
      */
-    public function postLoad(Result $entity, LifecycleEventArgs $args): void
+    public function postLoad(User $entity, LifecycleEventArgs $args): void
     {
-        if (!$entity->getImage()) {
+        if (!$entity->getPhoto()) {
             return;
         }
 
-        $image = $entity->getImage();
+        $image = $entity->getPhoto();
 
         $entity
-            ->setMediaWebPath($this->cacheManager->getBrowserPath($image, 'result_image_widen'))
+            ->setMediaWebPath($this->cacheManager->getBrowserPath($image, 'user_photo_widen'))
             ->setMediaIconWebPath(
-                $this->cacheManager->getBrowserPath($image, 'result_image_icon_widen')
+                $this->cacheManager->getBrowserPath($image, 'user_photo_icon_widen')
             )
             ->setMediaThumbnailWebPath(
-                $this->cacheManager->getBrowserPath($image, 'result_image_thumbnail_widen')
+                $this->cacheManager->getBrowserPath($image, 'user_photo_thumbnail_widen')
             );
     }
 }

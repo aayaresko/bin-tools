@@ -15,7 +15,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,EventListener,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -29,16 +29,28 @@ services:
         public: true
     App\Service\TradingProfitabilityCalculator:
         public: true
-    App\EventListener\ResultEventListener:
-        autowire: true
-        tags:
-          - { name: doctrine.orm.entity_listener, entity: App\Entity\Trading\Result, event: postLoad }
     App\Service\ImageProcessor:
         public: true
         arguments:
             - '@liip_imagine.data.manager'
             - '@liip_imagine.filter.manager'
             - '%kernel.project_dir%'
+
+    # forms
     App\Form\User\ProfileType:
         tags:
             - { name: form.type }
+
+    # Event listeners
+    App\EventListener\User\ProfileUpdateEventListener:
+        autowire: true
+        tags:
+            - { name: kernel.event_subscriber }
+    App\EventListener\ResultEventListener:
+        autowire: true
+        tags:
+          - { name: doctrine.orm.entity_listener, entity: App\Entity\Trading\Result, event: postLoad }
+    App\EventListener\User\EventListener:
+        autowire: true
+        tags:
+          - { name: doctrine.orm.entity_listener, entity: App\Entity\User, event: postLoad }

@@ -35,7 +35,7 @@ class CreateResultType extends AbstractType
                 'label' => 'trading.result.date',
                 'widget' => 'single_text',
             ])
-            ->add('media_file', FileType::class, ['label' => 'trading.result.image', 'required' => false])
+            ->add('mediaFile', FileType::class, ['label' => 'trading.result.image', 'required' => false])
         ;
     }
 

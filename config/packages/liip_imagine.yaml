@@ -11,9 +11,22 @@ liip_imagine:
             filesystem:
                 data_root:
                     - '%kernel.project_dir%/public/%env(RESULT_MEDIA_DIRECTORY)%'
+                    - '%kernel.project_dir%/public/%env(USER_MEDIA_DIRECTORY)%'
 
     filter_sets:
         cache: ~
+        user_photo_icon_widen:
+            filters:
+                relative_resize:
+                    widen: 32
+        user_photo_thumbnail_widen:
+            filters:
+                relative_resize:
+                    widen: 128
+        user_photo_widen:
+            filters:
+                relative_resize:
+                    widen: 800
         result_image_icon_widen:
             filters:
                 relative_resize:

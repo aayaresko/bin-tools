@@ -82,12 +82,11 @@ class ResultController extends AbstractController
         $entity->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($entity, $form->isValid());exit();
             $em->persist($entity);
             $em->flush();
 
             if ($entity->getImage()) {
-                $imageProcessor->filter($entity->getImage(), ImageProcessor::IMAGE_WIDEN, true);
+                $imageProcessor->filter($entity->getImage(), ImageProcessor::RESULT_IMAGE_WIDEN, true);
             }
 
             return $this->redirectToRoute('results_index');
