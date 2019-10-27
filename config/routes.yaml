@@ -7,7 +7,7 @@ logout:
 index:
     path: /{_locale}
     controller: App\Controller\DefaultController::index
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET]
     requirements:
         _locale: en|ru
@@ -15,7 +15,7 @@ index:
 results_index:
     path: /{_locale}/result
     controller: App\Controller\ResultController::index
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -23,7 +23,7 @@ results_index:
 result_create:
     path: /{_locale}/result/create
     controller: App\Controller\ResultController::create
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -31,7 +31,7 @@ result_create:
 results_by_user:
     path: /{_locale}/result/{user}
     controller: App\Controller\ResultController::indexByUser
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -39,7 +39,7 @@ results_by_user:
 steps:
     path: /{_locale}/trading/martingail/steps
     controller: App\Controller\StatisticController::steps
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -47,7 +47,7 @@ steps:
 trading_profitability:
     path: /{_locale}/trading/profitability
     controller: App\Controller\StatisticController::tradingProfitability
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -55,7 +55,7 @@ trading_profitability:
 user_index:
     path: /{_locale}/user
     controller: App\Controller\UserController::index
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
@@ -63,10 +63,14 @@ user_index:
 user_trading_profitability:
     path: /{_locale}/trading/profitability/user/{user}
     controller: App\Controller\StatisticController::userTradingProfitability
-    defaults: {_locale: en}
+    defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:
         _locale: en|ru
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /{_locale}
+    defaults: {_locale: ru}
+    requirements:
+        _locale: en|ru

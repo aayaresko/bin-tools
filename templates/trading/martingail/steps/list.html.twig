@@ -1,9 +1,6 @@
 {% set state = depositAmount < totalSpend %}
 {% set class = state ? "danger" : "info" %}
 {% set word = state ? 'trading.martingail.steps.amount.bigger' : 'trading.martingail.steps.amount.lower' %}
-<p class="text-{{ class }}">
-    {{ 'trading.martingail.steps.info'|trans({'{{totalSpend}}': totalSpend, '{{word}}': word|trans}) }}
-</p>
 <p>
     {{ 'trading.martingail.steps.list_title'|trans({'{{length}}': steps|length, '{{amount}}': depositAmount}) }}:
 </p>
@@ -15,4 +12,9 @@
             </li>
         {% endfor %}
     </ul>
+</div>
+<div class="form-group">
+    <p class="text-{{ class }}">
+        {{ 'trading.martingail.steps.info'|trans({'{{totalSpend}}': totalSpend, '{{word}}': word|trans}) }}
+    </p>
 </div>

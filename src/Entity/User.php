@@ -34,6 +34,13 @@ class User extends BaseUser
     private $results;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $visible = true;
+
+    /**
      * User constructor.
      */
     public function __construct()
@@ -54,7 +61,7 @@ class User extends BaseUser
      * @param mixed $results
      * @return User
      */
-    public function setResults($results): User
+    public function setResults($results): self
     {
         $this->results = $results;
 
@@ -65,12 +72,31 @@ class User extends BaseUser
      * @param Result $result
      * @return User
      */
-    public function addSong(Result $result): User
+    public function addResult(Result $result): self
     {
         if (false === $this->results->contains($result)) {
             $this->results->add($result);
             $result->setUser($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return $this->visible;
+    }
+
+    /**
+     * @param bool $visible
+     * @return User
+     */
+    public function setIsVisible(bool $visible): self
+    {
+        $this->visible = $visible;
 
         return $this;
     }
