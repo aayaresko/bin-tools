@@ -34,6 +34,11 @@ class CreateResultType extends AbstractType
             ->add('date', DateType::class, [
                 'label' => 'trading.result.date',
                 'widget' => 'single_text',
+                'format' => 'dd-mm-yyyy',
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'autocomplete' => 'off'
+                ],
             ])
             ->add('mediaFile', FileType::class, ['label' => 'trading.result.image', 'required' => false])
         ;
