@@ -32,7 +32,9 @@
     </div>
     <div class="card-footer text-muted">
         {% for tag in item.tags %}
-            #{{ tag.value }}
+            <a href="{{ path('results_search_by_tag', {'value': tag.value}) }}">
+                #{{ tag.value }}
+            </a>
         {% endfor %}
     </div>
 </div>

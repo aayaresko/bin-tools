@@ -28,7 +28,7 @@ result_create:
     requirements:
         _locale: en|ru
 
-results_searchby_tag:
+results_search_by_tag:
     path: /{_locale}/result/search/tag/{value}
     controller: App\Controller\ResultController::searchByTag
     defaults: {_locale: ru}
