@@ -22,10 +22,10 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {% if totalEarnings %}
+            {% if totalProfit %}
                 <p class="text-info">
                     {{ 'trading.profitability.total_earnings'|trans(
-                        {'{{deposit}}': dto.depositAmount, '{{period}}': dto.numberOfDays, '{{numberOfBets}}': dto.numberOfBetsPerDay, '{{totalEarnings}}': totalEarnings, '{{betSize}}': betSize}
+                        {'{{deposit}}': dto.depositAmount, '{{period}}': dto.numberOfDays, '{{numberOfBets}}': dto.numberOfBetsPerDay, '{{totalProfit}}': totalProfit, '{{totalIncome}}': totalIncome, '{{betSize}}': betSize}
                     ) }}
                 </p>
             {% endif %}

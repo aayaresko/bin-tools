@@ -84,4 +84,4 @@ trading:
         bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"
         profitable_bets_percentage: "Profitable bets (in percentage)"
         profit_per_bet_percentage: "Profit per bet (in percentage)"
-        total_earnings: "Total earnings from deposited {{deposit}} for {{period}} days with {{numberOfBets}} trades per day with {{betSize}} per one bet will be {{totalEarnings}}"
+        total_earnings: "Total earnings for {{period}} days with {{numberOfBets}} trades per day with {{betSize}} per one bet will be {{totalIncome}}. Profit {{totalProfit}}."
