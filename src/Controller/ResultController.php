@@ -8,6 +8,7 @@ use App\Entity\Trading\Result;
 use App\Entity\User;
 use App\Form\Trading\ResultsFilterType;
 use App\Form\Trading\CreateResultType;
+use App\Repository\TagRepository;
 use App\Repository\Trading\ResultRepository;
 use App\Service\ImageProcessor;
 use Knp\Component\Pager\PaginatorInterface;
@@ -102,6 +103,9 @@ class ResultController extends AbstractController
     public function create(Request $request, ImageProcessor $imageProcessor): Response
     {
         $em = $this->getDoctrine()->getManager();
+        /** @var TagRepository $tagRepository */
+        $tagRepository = $em->getRepository(Tag::class);
+
         $entity = new Result();
         $form = $this->createForm(CreateResultType::class, $entity);
 
@@ -119,7 +123,8 @@ class ResultController extends AbstractController
             return $this->redirectToRoute('results_index');
         }
 
-        $availableTags = $em->getRepository(Tag::class)->findAll();
+
+        $availableTags = $tagRepository->findUnique();
 
         return $this->render(
             'trading/result/create.html.twig',
