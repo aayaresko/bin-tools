@@ -26,7 +26,7 @@ liip_imagine:
         user_photo_widen:
             filters:
                 relative_resize:
-                    widen: 800
+                    widen: 896
         result_image_icon_widen:
             filters:
                 relative_resize:
@@ -34,8 +34,8 @@ liip_imagine:
         result_image_thumbnail_widen:
             filters:
                 relative_resize:
-                    widen: 128
+                    widen: 384
         result_image_widen:
             filters:
                 relative_resize:
-                    widen: 800
+                    widen: 896

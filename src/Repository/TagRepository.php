@@ -18,4 +18,9 @@ class TagRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Tag::class);
     }
+
+    public function findUnique()
+    {
+        return $this->createQueryBuilder('t')->select('t')->distinct()->getQuery()->execute();
+    }
 }
