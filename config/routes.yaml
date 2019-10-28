@@ -28,9 +28,17 @@ result_create:
     requirements:
         _locale: en|ru
 
-results_by_user:
-    path: /{_locale}/result/{user}
-    controller: App\Controller\ResultController::indexByUser
+results_searchby_tag:
+    path: /{_locale}/result/search/tag/{value}
+    controller: App\Controller\ResultController::searchByTag
+    defaults: {_locale: ru}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
+
+results_search_by_user:
+    path: /{_locale}/result/search/user/{user}
+    controller: App\Controller\ResultController::searchByUser
     defaults: {_locale: ru}
     methods: [GET, POST]
     requirements:

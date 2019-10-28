@@ -33,6 +33,9 @@ trading:
     user:
         results:
             title: "{{user}} user results"
+    tag:
+        results:
+            title: "Results by {{tag}} tag"
     result:
         tags: "Tags"
         title: "My results"

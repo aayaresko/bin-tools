@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ResultController extends AbstractController
 {
@@ -47,7 +48,7 @@ class ResultController extends AbstractController
         return $this->render('trading/result/index.html.twig', compact('pagination', 'form'));
     }
 
-    public function indexByUser(User $user, PaginatorInterface $paginator, Request $request): Response
+    public function searchByUser(User $user, PaginatorInterface $paginator, Request $request): Response
     {
         /** @var ResultRepository $repository */
         $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
@@ -69,7 +70,33 @@ class ResultController extends AbstractController
         $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
         $form = $form->createView();
 
-        return $this->render('trading/result/index_by_user.html.twig', compact('pagination', 'user', 'form'));
+        return $this->render('trading/result/search/user.html.twig', compact('pagination', 'user', 'form'));
+    }
+
+    public function searchByTag(string $value, PaginatorInterface $paginator, Request $request): Response
+    {
+        if (!$value) {
+            throw new NotFoundHttpException();
+        }
+
+        /** @var ResultRepository $repository */
+        $repository = $this->getDoctrine()->getManager()->getRepository(Result::class);
+        
+        $filter = new ResultsFilterDto();
+        $form = $this->createForm(ResultsFilterType::class, $filter);
+        $queryBuilder = $repository->getFilterByTagQueryBuilder($value);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $queryBuilder = $repository->attachResultsFilterCriteria($queryBuilder, $filter);
+        }
+
+        $page = $request->query->getInt('page', 1);
+        $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
+        $form = $form->createView();
+
+        return $this->render('trading/result/search/tag.html.twig', compact('pagination', 'value', 'form'));
     }
 
     public function create(Request $request, ImageProcessor $imageProcessor): Response

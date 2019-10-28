@@ -33,6 +33,9 @@ trading:
     user:
         results:
             title: "Результаты пользовтеля {{user}}"
+    tag:
+        results:
+            title: "Результаты по {{tag}} тэгу"
     result:
         tags: "Тэги"
         title: "Мои результаты"
