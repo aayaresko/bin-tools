@@ -1,0 +1,38 @@
+<div class="card">
+    {% if item.image %}
+        {% set modalId = "modal" ~ item.id %}
+        <img src="{{ asset(item.image) | imagine_filter('result_image_thumbnail_widen') }}" class="card-img-top" data-toggle="modal" data-target="#{{ modalId }}" />
+        <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'close'|trans }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="{{ asset(item.image) | imagine_filter('result_image_widen') }}" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="card-header">
+        {{ item.date|date('d.m.Y') }}
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
+            {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
+            {{ 'trading.result.profit'|trans }}: {{ item.profit }}<br/>
+            {{ 'trading.result.spent'|trans }}: {{ item.spent }}<br/>
+            {{ 'trading.result.notes'|trans }}: {{ item.notes }}<br/>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        {% for tag in item.tags %}
+            #{{ tag.value }}
+        {% endfor %}
+    </div>
+</div>

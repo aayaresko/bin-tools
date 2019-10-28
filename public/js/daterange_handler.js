@@ -4,12 +4,14 @@ $(document).ready(function() {
 
     start.datepicker({
         format: 'dd.mm.yyyy',
-        language: locale
+        language: locale,
+        todayBtn: true
     });
 
     end.datepicker({
         format: 'dd.mm.yyyy',
-        language: locale
+        language: locale,
+        todayBtn: true
     });
 
     $('#for-a-month').on('click', function (event) {

@@ -38,17 +38,11 @@ App\Dto\Trading\ProfitabilityDto:
 App\Entity\Trading\Result:
     properties:
         openingQuote:
-            - NotBlank:
-                message: trading.result.opening_quote.blank
-                groups: [create_trading_result]
             - GreaterThan:
                 value: 0
                 message: trading.result.opening_quote.invalid
                 groups: [create_trading_result]
         closingQuote:
-            - NotBlank:
-                message: trading.result.closing_quote.blank
-                groups: [create_trading_result]
             - GreaterThan:
                 value: 0
                 message: trading.result.closing_quote.invalid

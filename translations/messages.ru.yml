@@ -33,7 +33,11 @@ trading:
     user:
         results:
             title: "Результаты пользовтеля {{user}}"
+    tag:
+        results:
+            title: "Результаты по {{tag}} тэгу"
     result:
+        tags: "Тэги"
         title: "Мои результаты"
         description: "Здесь Вы можете хранить результат каждой вашей сделки здесь для быстрого и бесплатного доступа, так же Вы сможете рассчитывать прибыльность вашей торговой системы"
         create: "Записать результат"
@@ -80,4 +84,4 @@ trading:
         bet_size_in_percentage: "Пороцент (от общей суммы депозита) на одну сделку"
         profitable_bets_percentage: "Пороцент успешных сделок"
         profit_per_bet_percentage: "Приблизительный пороцент прибыли по одной сделке"
-        total_earnings: "Общий доход с депозита {{deposit}} за {{period}} дней при {{numberOfBets}} сделках в день составит {{totalEarnings}}"
+        total_earnings: "Общий доход с депозита {{deposit}} за {{period}} дней при {{numberOfBets}} сделках в день и размере сделки {{betSize}} составит {{totalEarnings}}"

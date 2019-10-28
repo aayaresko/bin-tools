@@ -33,7 +33,11 @@ trading:
     user:
         results:
             title: "{{user}} user results"
+    tag:
+        results:
+            title: "Results by {{tag}} tag"
     result:
+        tags: "Tags"
         title: "My results"
         description: "Here you can store each of your trading results here for fast and free access to your results and, you will be able to calculate the profitability of your trading system"
         create: "Save new result"
@@ -80,4 +84,4 @@ trading:
         bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"
         profitable_bets_percentage: "Profitable bets (in percentage)"
         profit_per_bet_percentage: "Profit per bet (in percentage)"
-        total_earnings: "Total earnings from deposited {{deposit}} for {{period}} days with {{numberOfBets}} trades per day will be {{totalEarnings}}"
+        total_earnings: "Total earnings from deposited {{deposit}} for {{period}} days with {{numberOfBets}} trades per day with {{betSize}} per one bet will be {{totalEarnings}}"

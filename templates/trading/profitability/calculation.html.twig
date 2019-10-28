@@ -24,7 +24,9 @@
         <div class="col-12">
             {% if totalEarnings %}
                 <p class="text-info">
-                    {{ 'trading.profitability.total_earnings'|trans({'{{deposit}}': dto.depositAmount, '{{period}}': dto.numberOfDays, '{{numberOfBets}}': dto.numberOfBetsPerDay, '{{totalEarnings}}': totalEarnings}) }}
+                    {{ 'trading.profitability.total_earnings'|trans(
+                        {'{{deposit}}': dto.depositAmount, '{{period}}': dto.numberOfDays, '{{numberOfBets}}': dto.numberOfBetsPerDay, '{{totalEarnings}}': totalEarnings, '{{betSize}}': betSize}
+                    ) }}
                 </p>
             {% endif %}
         </div>
