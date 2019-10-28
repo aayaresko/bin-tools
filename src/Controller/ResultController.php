@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Dto\Trading\ResultsFilterDto;
+use App\Entity\Tag;
 use App\Entity\Trading\Result;
 use App\Entity\User;
 use App\Form\Trading\ResultsFilterType;
@@ -75,9 +76,16 @@ class ResultController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Result();
+
+        $tag1 = new Tag();
+        $tag1->setValue('tag1');
+        $entity->addTag($tag1);
+        $tag2 = new Tag();
+        $tag2->setValue('tag2');
+        $entity->addTag($tag2);
+
         $form = $this->createForm(CreateResultType::class, $entity);
 
-        $form->add('save', SubmitType::class, ['label' => 'save']);
         $form->handleRequest($request);
         $entity->setUser($this->getUser());
 

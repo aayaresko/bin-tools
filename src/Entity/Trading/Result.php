@@ -89,7 +89,7 @@ class Result
     /**
      * @var mixed
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="results")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="results", cascade={"persist", "remove"})
      */
     private $tags;
 
@@ -214,7 +214,20 @@ class Result
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
+            $tag->addResult($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @param Tag $tag
+     * @return Result
+     */
+    public function removeTag(Tag $tag): self
+    {
+        $tag->removeResult($this);
+        $this->tags->removeElement($tag);
 
         return $this;
     }

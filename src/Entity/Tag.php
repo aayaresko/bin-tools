@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Trading\Result;
 use App\Helper\HasNameTrait;
 use App\Helper\HasValueTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -65,6 +66,30 @@ class Tag
     public function setResults($results): self
     {
         $this->results = $results;
+
+        return $this;
+    }
+
+    /**
+     * @param Result $result
+     * @return Tag
+     */
+    public function addResult(Result $result): self
+    {
+        if (!$this->results->contains($result)) {
+            $this->results->add($result);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Result $result
+     * @return Tag
+     */
+    public function removeResult(Result $result): self
+    {
+        $this->results->removeElement($result);
 
         return $this;
     }

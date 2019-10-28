@@ -17,7 +17,15 @@
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form) }}
             {{ form_widget(form) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">{{ 'save'|trans }}</button>
+            </div>
             {{ form_end(form) }}
+        </div>
+        <div class="col-md-4">
+            {% for tag in form.tags %}
+                <li>{{ form_row(tag.value) }}</li>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
