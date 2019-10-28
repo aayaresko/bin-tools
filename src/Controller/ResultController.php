@@ -76,14 +76,6 @@ class ResultController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Result();
-
-        $tag1 = new Tag();
-        $tag1->setValue('tag1');
-        $entity->addTag($tag1);
-        $tag2 = new Tag();
-        $tag2->setValue('tag2');
-        $entity->addTag($tag2);
-
         $form = $this->createForm(CreateResultType::class, $entity);
 
         $form->handleRequest($request);
