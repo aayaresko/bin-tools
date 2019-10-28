@@ -24,12 +24,10 @@
                 {{ form_widget(form.dateTo) }}
             </div>
             <button type="submit" class="btn-success btn">{{ 'calculate'|trans }}</button>
-
-            <a href="#" id="for-a-month" class="btn-secondary btn ml-1">{{ 'range.month'|trans }}</a>
+            <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
             <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
             <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
             <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
-
             {{ form_end(form) }}
         </div>
     </div>

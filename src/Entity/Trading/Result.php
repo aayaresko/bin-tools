@@ -28,14 +28,14 @@ class Result
     private $id = 0;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=false)
+     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=true)
      */
-    private $openingQuote = 0.00;
+    private $openingQuote;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=false)
+     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=true)
      */
-    private $closingQuote = 0.00;
+    private $closingQuote;
 
     /**
      * @var integer

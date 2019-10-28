@@ -7,9 +7,7 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
-            <h1>
-                {{ 'trading.result.title'|trans }}
-            </h1>
+            <h1>{{ 'trading.result.title'|trans }}</h1>
         </div>
     </div>
     <div class="row form-group">
@@ -24,12 +22,10 @@
                 {{ form_widget(form.dateTo) }}
             </div>
             <button type="submit" class="btn-success btn">{{ 'search'|trans }}</button>
-
-            <a href="#" id="for-a-month" class="btn-secondary btn ml-1">{{ 'range.month'|trans }}</a>
+            <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
             <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
             <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
             <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
-
             {{ form_end(form) }}
         </div>
     </div>
@@ -47,46 +43,7 @@
                 <br/>
             {% endif %}
             <div class="col-4">
-                <div class="card">
-                    {% if item.image %}
-                        <img src="{{ asset(item.image) | imagine_filter('result_image_thumbnail_widen') }}" class="card-img-top" />
-                    {% endif %}
-                    <div class="card-header">
-                        {{ item.date|date('d.m.Y') }}
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
-                            {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
-                            {{ 'trading.result.profit'|trans }}: {{ item.profit }}<br/>
-                            {{ 'trading.result.spent'|trans }}: {{ item.spent }}<br/>
-                            {{ 'trading.result.notes'|trans }}: {{ item.notes }}<br/>
-                        </p>
-                    </div>
-                    {% if item.image %}
-                        {% set modalId = "modal" ~ item.id %}
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ modalId }}">
-                                {{ 'trading.result.view_image'|trans }}
-                            </button>
-                            <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-xl" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">{{ 'close'|trans }}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body text-center">
-                                            <img src="{{ asset(item.image) | imagine_filter('result_image_widen') }}" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
+                {% include 'trading/result/partial/card.html.twig' %}
             </div>
         {% endfor %}
     </div>

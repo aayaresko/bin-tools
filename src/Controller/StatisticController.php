@@ -57,6 +57,7 @@ class StatisticController extends AbstractController
                 'form' => $form->createView(),
                 'dto' => $dto,
                 'totalEarnings' => $calculator->getTotalEarnings($dto),
+                'betSize' => $calculator->getBetSize($dto),
             ]
         );
     }

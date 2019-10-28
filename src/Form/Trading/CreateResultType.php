@@ -20,10 +20,12 @@ class CreateResultType extends AbstractType
     {
         $builder
             ->add('openingQuote', MoneyType::class, [
+                'required' => false,
                 'label' => 'trading.result.opening_quote',
                 'currency' => 'USD'
             ])
             ->add('closingQuote', MoneyType::class, [
+                'required' => false,
                 'label' => 'trading.result.closing_quote',
                 'currency' => 'USD'
             ])
@@ -36,7 +38,7 @@ class CreateResultType extends AbstractType
             ->add('date', DateType::class, [
                 'label' => 'trading.result.date',
                 'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
+                'format' => 'dd.mm.yyyy',
                 'attr' => [
                     'class' => 'js-datepicker',
                     'autocomplete' => 'off'

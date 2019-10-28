@@ -7,9 +7,7 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
-            <h1>
-                {{ 'trading.user.results.title'|trans({'{{user}}': user}) }}
-            </h1>
+            <h1>{{ 'trading.user.results.title'|trans({'{{user}}': user}) }}</h1>
         </div>
     </div>
     <div class="row">
@@ -23,14 +21,11 @@
                 </div>
                 {{ form_widget(form.dateTo) }}
             </div>
-
             <button type="submit" class="btn-success btn">{{ 'search'|trans }}</button>
-
-            <a href="#" id="for-a-month" class="btn-secondary btn ml-1">{{ 'range.month'|trans }}</a>
+            <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
             <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
             <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
             <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
-
             {{ form_end(form) }}
         </div>
     </div>
@@ -48,30 +43,8 @@
                 <br/>
             {% endif %}
             <div class="col-4">
-                <div class="card">
-                    {% if item.image %}
-                        <img src="{{ asset(item.image) | imagine_filter('result_image_thumbnail_widen') }}" class="card-img-top" />
-                    {% endif %}
-                    <div class="card-header">
-                        <span class="float-left">
-                            {{ item.date|date('d.m.Y') }}
-                        </span>
-                        <span class="float-right text-muted">
-                            {{ 'created'|trans }} {{ item.createdAt|date('d.m.Y') }}
-                        </span>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
-                            {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
-                            {{ 'trading.result.profit'|trans }}: {{ item.profit }}<br/>
-                            {{ 'trading.result.spent'|trans }}: {{ item.spent }}<br/>
-                            {{ 'trading.result.notes'|trans }}: {{ item.notes }}<br/>
-                        </p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        <a href="#">{{ 'trading.result.view_image'|trans }}</a><br/>
-                    </div>
+                <div class="col-4">
+                    {% include 'trading/result/partial/card.html.twig' %}
                 </div>
             </div>
         {% endfor %}

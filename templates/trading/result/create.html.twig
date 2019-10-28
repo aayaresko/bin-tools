@@ -16,6 +16,7 @@
         <div class="col-md-4">
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form) }}
+            {{ form_errors(form) }}
             <div class="form-group">
                 <label for="tags">{{ 'trading.result.tags'|trans }}</label>
                 <select id="tags" name="create_result[tags][][value]" class="form-control js-select-multiple" multiple="multiple">
@@ -34,6 +35,7 @@
             {{ form_row(form.notes) }}
             {{ form_row(form.date) }}
             {{ form_row(form.mediaFile) }}
+            {{ form_widget(form._token) }}
             <div class="form-group">
                 <button type="submit" class="btn btn-success">{{ 'save'|trans }}</button>
             </div>
@@ -47,8 +49,9 @@
         $(document).ready(function() {
             $('.js-datepicker').datepicker({
                 format: 'dd.mm.yyyy',
-                language: '{{ app.request.locale }}'
-            });
+                language: '{{ app.request.locale }}',
+                todayBtn: true
+            }).datepicker('setDate','now');
 
             $('.js-select-multiple').select2({
                 tags: true,
