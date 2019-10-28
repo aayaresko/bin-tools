@@ -22,7 +22,7 @@ class StepsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => StepsDto::class,
-            'validation_groups' => 'steps_for_deposit'
+            'validation_groups' => ['steps_for_deposit']
         ]);
     }
 }

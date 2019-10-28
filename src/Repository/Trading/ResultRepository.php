@@ -24,17 +24,13 @@ class ResultRepository extends ServiceEntityRepository
         parent::__construct($registry, Result::class);
     }
 
-    /**
-     * @param QueryBuilder $builder
-     * @param ResultsFilterDto $dto
-     *
-     * @return QueryBuilder
-     */
-    private function attachResultsFilterCriteria(QueryBuilder $builder, ResultsFilterDto $dto): QueryBuilder
+    public function attachResultsFilterCriteria(QueryBuilder $builder, ResultsFilterDto $dto): QueryBuilder
     {
-        $builder
-            ->where('r.user = :userId')
-            ->setParameter('userId', $dto->getUser()->getId());
+        if ($dto->getUser()) {
+            $builder
+                ->andWhere('r.user = :userId')
+                ->setParameter('userId', $dto->getUser()->getId());
+        };
 
         if ($dto->getDateFrom() instanceof \DateTimeInterface && $dto->getDateTo() instanceof \DateTimeInterface) {
             $builder
@@ -59,7 +55,6 @@ class ResultRepository extends ServiceEntityRepository
         return $builder;
     }
 
-
     public function getByUserQueryBuilder(User $user): QueryBuilder
     {
         $builder = $this->createQueryBuilder('r');
@@ -80,11 +75,18 @@ class ResultRepository extends ServiceEntityRepository
         return $builder;
     }
 
-    public function filterByDto(ResultsFilterDto $dto)
+    public function getFilterByTagQueryBuilder(string $tag): QueryBuilder
     {
-        $builder = $this->getFilterByDtoQueryBuilder($dto);
+        $builder = $this->createQueryBuilder('r');
 
-        return $builder->getQuery()->execute();
+        $builder->leftJoin('r.tags', 't');
+
+        $builder
+            ->andWhere(
+                $builder->expr()->like('t.value',"'{$tag}'")
+            );
+
+        return $builder;
     }
 
     public function calculateUserProfitabilityFromDto(ResultsFilterDto $dto): ProfitabilityDto
