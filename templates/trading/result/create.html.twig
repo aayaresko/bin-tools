@@ -19,16 +19,25 @@
             <div class="form-group">
                 <label for="tags">{{ 'trading.result.tags'|trans }}</label>
                 <select id="tags" name="create_result[tags][][value]" class="form-control js-select-multiple" multiple="multiple">
-                    {% for tag in form.tags %}
-                        <option >{{ form_row(tag.value) }}</option>
+                    {% for tag in availableTags %}
+                        <option>{{ tag.value }}</option>
+                    {% endfor %}
+                    {% for tag in selectedTags %}
+                        <option selected>{{ tag.value }}</option>
                     {% endfor %}
                 </select>
             </div>
-            {{ form_widget(form) }}
+            {{ form_row(form.openingQuote) }}
+            {{ form_row(form.closingQuote) }}
+            {{ form_row(form.spent) }}
+            {{ form_row(form.profit) }}
+            {{ form_row(form.notes) }}
+            {{ form_row(form.date) }}
+            {{ form_row(form.mediaFile) }}
             <div class="form-group">
                 <button type="submit" class="btn btn-success">{{ 'save'|trans }}</button>
             </div>
-            {{ form_end(form) }}
+            {{ form_end(form, {'render_rest': false}) }}
         </div>
     </div>
 {% endblock %}

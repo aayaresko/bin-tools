@@ -92,6 +92,15 @@ class ResultController extends AbstractController
             return $this->redirectToRoute('results_index');
         }
 
-        return $this->render('trading/result/create.html.twig', ['form' => $form->createView()]);
+        $availableTags = $em->getRepository(Tag::class)->findAll();
+
+        return $this->render(
+            'trading/result/create.html.twig',
+            [
+                'form' => $form->createView(),
+                'availableTags' => $availableTags,
+                'selectedTags' => $entity->getTags()
+            ]
+        );
     }
 }
