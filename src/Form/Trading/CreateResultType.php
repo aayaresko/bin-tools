@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,20 +20,20 @@ class CreateResultType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('openingQuote', MoneyType::class, [
+            ->add('openingQuote', NumberType::class, [
                 'required' => false,
                 'label' => 'trading.result.opening_quote',
-                'currency' => 'USD'
+                'scale' => 5
             ])
-            ->add('closingQuote', MoneyType::class, [
+            ->add('closingQuote', NumberType::class, [
                 'required' => false,
                 'label' => 'trading.result.closing_quote',
-                'currency' => 'USD'
+                'scale' => 5
             ])
             ->add('spent', IntegerType::class, ['label' => 'trading.result.spent'])
-            ->add('profit', MoneyType::class, [
+            ->add('profit', NumberType::class, [
                 'label' => 'trading.result.profit',
-                'currency' => 'USD'
+                'scale' => 2
             ])
             ->add('notes', TextareaType::class, ['label' => 'trading.result.notes', 'required' => false])
             ->add('date', DateType::class, [

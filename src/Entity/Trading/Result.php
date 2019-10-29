@@ -18,6 +18,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Result
 {
+    const DIVISOR = 100000;
+
     use HasUserTrait, HasCreatedAtTrait, HasMediaFileTrait;
 
     /**
@@ -28,12 +30,12 @@ class Result
     private $id = 0;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=true)
+     * @ORM\Column(type="bigint", nullable=true)
      */
     private $openingQuote;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=6, nullable=true)
+     * @ORM\Column(type="bigint", nullable=true)
      */
     private $closingQuote;
 
@@ -47,7 +49,7 @@ class Result
     /**
      * @var float
      *
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $profit = 0.00;
 
@@ -105,24 +107,24 @@ class Result
 
     public function getOpeningQuote(): ?float
     {
-        return $this->openingQuote;
+        return $this->openingQuote / self::DIVISOR;
     }
 
     public function setOpeningQuote(float $openingQuote): self
     {
-        $this->openingQuote = $openingQuote;
+        $this->openingQuote = self::DIVISOR * $openingQuote;
 
         return $this;
     }
 
     public function getClosingQuote(): ?float
     {
-        return $this->closingQuote;
+        return $this->closingQuote / self::DIVISOR;
     }
 
     public function setClosingQuote(float $closingQuote): self
     {
-        $this->closingQuote = $closingQuote;
+        $this->closingQuote = self::DIVISOR * $closingQuote;
 
         return $this;
     }
