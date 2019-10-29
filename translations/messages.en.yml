@@ -9,6 +9,7 @@ label_previous: "Previews"
 label_next: "Next"
 reset: "Reset"
 search: "Search"
+forbidden: "Forbidden!"
 range:
     to: "TO"
     month: "For month"

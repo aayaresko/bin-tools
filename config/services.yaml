@@ -29,6 +29,9 @@ services:
         public: true
     App\Service\TradingProfitabilityCalculator:
         public: true
+    App\Service\TagService:
+        autowire: true
+        public: true
     App\Service\ImageProcessor:
         public: true
         arguments:
@@ -49,7 +52,7 @@ services:
         autowire: true
         tags:
             - { name: kernel.event_subscriber }
-    App\EventListener\ResultEventListener:
+    App\EventListener\Result\EventListener:
         autowire: true
         tags:
           - { name: doctrine.orm.entity_listener, entity: App\Entity\Trading\Result, event: postLoad }
@@ -57,3 +60,4 @@ services:
         autowire: true
         tags:
           - { name: doctrine.orm.entity_listener, entity: App\Entity\User, event: postLoad }
+

@@ -19,12 +19,28 @@
         </div>
     {% endif %}
     <div class="card-header">
-        {{ item.date|date('d.m.Y') }}
+        <div class="row">
+            <div class="col-md-4 text-left">
+                {{ item.date|date('d.m.Y') }}
+            </div>
+            <div class="col-md-4 offset-md-4">
+                <span class="text-right text-muted">
+                    {{ item.createdAt|date('d.m.Y') }}
+                </span>
+                <a href="{{ path('result_delete', {'result': item.id}) }}" class="close js-remove-link" aria-label="Close">
+                    &times;
+                </a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <p class="card-text">
-            {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
-            {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
+            {% if item.openingQuote %}
+                {{ 'trading.result.opening_quote'|trans }}: {{ item.openingQuote }}<br/>
+            {% endif %}
+            {% if item.closingQuote %}
+                {{ 'trading.result.closing_quote'|trans }}: {{ item.closingQuote }}<br/>
+            {% endif %}
             {{ 'trading.result.profit'|trans }}: {{ item.profit }}<br/>
             {{ 'trading.result.spent'|trans }}: {{ item.spent }}<br/>
             {{ 'trading.result.notes'|trans }}: {{ item.notes }}<br/>

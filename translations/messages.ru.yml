@@ -9,6 +9,7 @@ label_previous: "Предыдущая"
 label_next: "Следующая"
 reset: "Сбросить"
 search: "Искать"
+forbidden: "Запрещено!"
 range:
     month: "За месяц"
     year: "За год"
