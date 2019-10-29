@@ -14,9 +14,11 @@ use App\Service\ImageProcessor;
 use App\Service\TagService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ResultController extends AbstractController
 {
@@ -115,5 +117,19 @@ class ResultController extends AbstractController
                 'selectedTags' => $entity->getTags()
             ]
         );
+    }
+
+    public function delete(Result $result, TranslatorInterface $translator): JsonResponse
+    {
+        if (!$this->isGranted('delete', $result)) {
+            return new JsonResponse(['error' => $translator->trans('forbidden')]);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($result);
+        $em->flush();
+
+        return new JsonResponse(['success' => true]);
     }
 }

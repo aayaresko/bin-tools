@@ -36,6 +36,14 @@ results_search_by_user:
     requirements:
         _locale: en|ru
 
+result_delete:
+    path: /{_locale}/result/{result}/delete
+    controller: App\Controller\ResultController::delete
+    defaults: {_locale: ru}
+    methods: [DELETE]
+    requirements:
+        _locale: en|ru
+
 steps:
     path: /{_locale}/trading/martingail/steps
     controller: App\Controller\StatisticController::steps

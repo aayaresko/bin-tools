@@ -52,7 +52,7 @@ class ResultRepository extends ServiceEntityRepository
             }
         }
 
-        return $builder;
+        return $builder->orderBy('r.createdAt', 'ASC');
     }
 
     public function getByUserQueryBuilder(User $user): QueryBuilder

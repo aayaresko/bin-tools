@@ -105,7 +105,7 @@
         </div>
     </footer>
     {% block javascripts %}
-        <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/jquery-3.4.1.min.js') }}"></script>
 
         <script type="text/javascript" src="{{ asset('vendor/select2-develop/js/select2.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/select2-develop/js/i18n/'  ~ app.request.locale ~ '.js') }}"></script>
@@ -115,6 +115,8 @@
 
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/popper.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript" >
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
