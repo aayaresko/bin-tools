@@ -28,6 +28,8 @@ user:
         show: "My profile"
     is_visible: "Is my profile visible in the users list?"
     registered_at: "Registration date"
+tags:
+    title: "Tags"
 trading:
     tools: "Tools"
     user:
@@ -42,7 +44,6 @@ trading:
         title: "My results"
         description: "Here you can store each of your trading results here for fast and free access to your results and, you will be able to calculate the profitability of your trading system"
         create: "Save new result"
-        list: "View my results"
         opening_quote: "Opening quote"
         closing_quote: "Closing quote"
         spent: "Spent"
@@ -52,7 +53,11 @@ trading:
         image: "Image"
         view_image: "View image"
         user:
+            list: "View my results"
             title: "Profitability of my trading"
+        tag:
+            title: "Profitability by tag"
+            list: "View tags results"
         filter:
             date_from: "Date from"
             date_to: "Date to"
@@ -77,6 +82,10 @@ trading:
             title: "User profitability"
             bets_per_period: "The user '{{user}}' has made {{totalBets}} for the period"
             profitability_for_period: "Users '{{user}}' accuracy fot the period is {{profitability}}%"
+        tag:
+            title: "Tag profitability"
+            bets_per_period: "The tag '{{tag}}' has made {{totalBets}} for the period"
+            profitability_for_period: "Tags '{{tag}}' accuracy fot the period is {{profitability}}%"
         title: "Trading profitability calculation"
         description: "Here you can calculate what will be the approximate profitability of you trading by specifying your trading system data, statistics and deposit amount"
         deposit_amount: "Deposit amount"
@@ -85,4 +94,6 @@ trading:
         bet_size_in_percentage: "Bet size (in percentage from your initial deposit)"
         profitable_bets_percentage: "Profitable bets (in percentage)"
         profit_per_bet_percentage: "Profit per bet (in percentage)"
-        total_earnings: "Total earnings for {{period}} days with {{numberOfBets}} trades per day with {{betSize}} per one bet will be {{totalIncome}}. Deducting initial deposit {{deposit}} profit will be {{totalProfit}}."
+        total_earnings:
+            l1: "Total earnings for {{period}} days with {{numberOfBets}} trades per day with {{betSize}} per one bet will be {{totalIncome}}."
+            l2: "Deducting initial deposit {{deposit}} profit will be {{totalProfit}}."
