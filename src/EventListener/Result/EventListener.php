@@ -1,12 +1,12 @@
 <?php
 
-namespace App\EventListener;
+namespace App\EventListener\Result;
 
 use App\Entity\Trading\Result;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 
-class ResultEventListener
+class EventListener
 {
     /**
      * @var CacheManager
