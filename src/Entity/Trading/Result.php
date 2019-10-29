@@ -89,7 +89,7 @@ class Result
     /**
      * @var mixed
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="results", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="results", cascade={"persist"})
      */
     private $tags;
 
