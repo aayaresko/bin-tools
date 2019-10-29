@@ -14,18 +14,29 @@
         <div class="col-12">
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-            <div class="input-group" id="datepicker">
+            <div class="form-group">
+                <label for="tag" class="mr-1">{{ 'trading.tag.value'|trans }}</label>
+                <select id="tag" class="form-control js-select-single">
+                    {% for tag in availableTags %}
+                        {% set selected = (tag.value == value) ? 'selected' : '' %}
+                        <option {{ selected }}>{{ tag.value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-group ml-3" id="datepicker">
                 <div class="input-group-prepend">
                     {{ form_widget(form.dateFrom) }}
                     <span class="input-group-text">{{ 'range.to'|trans }}</span>
                 </div>
                 {{ form_widget(form.dateTo) }}
             </div>
-            <button type="submit" class="btn-success btn">{{ 'search'|trans }}</button>
-            <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
-            <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
-            <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
-            <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
+            <div class="ml-5">
+                <button type="submit" class="btn-success btn">{{ 'search'|trans }}</button>
+                <a href="#" id="for-a-month" class="btn-secondary btn">{{ 'range.month'|trans }}</a>
+                <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
+                <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
+                <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
+            </div>
             {{ form_end(form) }}
         </div>
     </div>
@@ -62,5 +73,19 @@
     <script type="text/javascript">
         var locale = '{{ app.request.locale }}'
     </script>
-    <script type="text/javascript" src="{{ asset('js/daterange_handler.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/daterange_handler.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var target = $('.js-select-single');
+
+            target.select2({
+                tags: true,
+                language: '{{ app.request.locale }}'
+            });
+
+            target.on("select2:select", function (event) {
+                window.location.replace(event.target.value);
+            })
+        });
+    </script>
 {% endblock %}

@@ -12,14 +12,6 @@ index:
     requirements:
         _locale: en|ru
 
-results_index:
-    path: /{_locale}/result
-    controller: App\Controller\ResultController::index
-    defaults: {_locale: ru}
-    methods: [GET, POST]
-    requirements:
-        _locale: en|ru
-
 result_create:
     path: /{_locale}/result/create
     controller: App\Controller\ResultController::create
