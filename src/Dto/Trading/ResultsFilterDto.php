@@ -12,6 +12,8 @@ class ResultsFilterDto
 
     private $user;
 
+    public $tagValue;
+
     /**
      * @return \DateTimeInterface|null
      */
