@@ -40,7 +40,7 @@
                             {{ 'trading.result.title'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="resultsDropdown">
-                            <a class="dropdown-item" href="{{ path('results_index') }}">
+                            <a class="dropdown-item" href="{{ path('results_search_by_user', {'user': app.user.id}) }}">
                                 {{ 'trading.result.list'|trans }}
                             </a>
                             <a class="dropdown-item" href="{{ path('result_create') }}">

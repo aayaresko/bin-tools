@@ -34,6 +34,7 @@ trading:
         results:
             title: "Результаты пользовтеля {{user}}"
     tag:
+        value: "Выбрать тэг"
         results:
             title: "Результаты по {{tag}} тэгу"
     result:

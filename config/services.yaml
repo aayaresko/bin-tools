@@ -40,6 +40,9 @@ services:
     App\Form\User\ProfileType:
         tags:
             - { name: form.type }
+    App\Form\Trading\TagResultsFilterType:
+        tags:
+            - { name: form.type }
 
     # Event listeners
     App\EventListener\User\ProfileUpdateEventListener:
