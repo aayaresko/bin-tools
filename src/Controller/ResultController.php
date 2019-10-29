@@ -11,6 +11,7 @@ use App\Form\Trading\CreateResultType;
 use App\Repository\TagRepository;
 use App\Repository\Trading\ResultRepository;
 use App\Service\ImageProcessor;
+use App\Service\TagService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,7 +72,7 @@ class ResultController extends AbstractController
         $page = $request->query->getInt('page', 1);
         $pagination = $paginator->paginate($queryBuilder, $page, self::DEFAULT_PAGE_SIZE);
         $form = $form->createView();
-        $availableTags = $tagRepository->findUnique();
+        $availableTags = $tagRepository->findAll();
 
         return $this->render(
             'trading/result/search/tag.html.twig',
@@ -79,7 +80,7 @@ class ResultController extends AbstractController
         );
     }
 
-    public function create(Request $request, ImageProcessor $imageProcessor): Response
+    public function create(Request $request, ImageProcessor $imageProcessor, TagService $tagService): Response
     {
         $em = $this->getDoctrine()->getManager();
         /** @var TagRepository $tagRepository */
@@ -92,6 +93,9 @@ class ResultController extends AbstractController
         $entity->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tags = $tagService->filterDuplicated($entity->getTags());
+
+            $entity->setTags($tags);
             $em->persist($entity);
             $em->flush();
 
@@ -99,17 +103,15 @@ class ResultController extends AbstractController
                 $imageProcessor->filter($entity->getImage(), ImageProcessor::RESULT_IMAGE_WIDEN, true);
             }
 
-            return $this->redirectToRoute('results_index');
+            return $this->redirectToRoute('results_search_by_user', ['user' => $this->getUser()->getId()]);
         }
 
-
-        $availableTags = $tagRepository->findUnique();
 
         return $this->render(
             'trading/result/create.html.twig',
             [
                 'form' => $form->createView(),
-                'availableTags' => $availableTags,
+                'availableTags' => $tagRepository->findAll(),
                 'selectedTags' => $entity->getTags()
             ]
         );

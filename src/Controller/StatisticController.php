@@ -111,7 +111,7 @@ class StatisticController extends AbstractController
         }
 
         $form = $form->createView();
-        $availableTags = $tagRepository->findUnique();
+        $availableTags = $tagRepository->findAll();
 
         return $this->render(
             'trading/profitability/calculation/tag.html.twig',
