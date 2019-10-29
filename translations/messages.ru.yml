@@ -85,4 +85,4 @@ trading:
         bet_size_in_percentage: "Пороцент (от общей суммы депозита) на одну сделку"
         profitable_bets_percentage: "Пороцент успешных сделок"
         profit_per_bet_percentage: "Приблизительный пороцент прибыли по одной сделке"
-        total_earnings: "Общий доход за {{period}} дней при {{numberOfBets}} сделках в день и размере сделки {{betSize}} составит {{totalIncome}}. Чистая прибыль {{totalProfit}}."
+        total_earnings: "Общий доход за {{period}} дней при {{numberOfBets}} сделках в день и размере сделки {{betSize}} составит {{totalIncome}}. Вычитая изначальный депозит {{deposit}} чистая прибыль составит {{totalProfit}}."

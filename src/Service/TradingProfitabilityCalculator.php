@@ -16,7 +16,8 @@ class TradingProfitabilityCalculator
         $betSize = $this->getBetSize($dto);
         $winningBets = $dto->profitableBetsPercentage / 100 * $dto->numberOfBetsPerDay * $dto->numberOfDays;
         $losingBets = (100 - $dto->profitableBetsPercentage) / 100 * $dto->numberOfBetsPerDay * $dto->numberOfDays;
-        $totalProfit = $winningBets * $betSize;
+        $return = $winningBets * $betSize;
+        $totalProfit = $return + ($return * $dto->profitPerBetPercentage / 100);
         $totalLoss = $losingBets * $betSize;
 
         return $totalProfit - $totalLoss;
