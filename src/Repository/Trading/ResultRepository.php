@@ -83,7 +83,7 @@ class ResultRepository extends ServiceEntityRepository
 
         $builder
             ->andWhere(
-                $builder->expr()->like('t.value',"'{$tag}'")
+                $builder->expr()->like('t.value',"'%{$tag}%'")
             );
 
         return $builder;
@@ -92,12 +92,15 @@ class ResultRepository extends ServiceEntityRepository
     public function calculateUserProfitabilityFromDto(ResultsFilterDto $dto): ProfitabilityDto
     {
         $data = new ProfitabilityDto();
-        $builder = $this
-            ->createQueryBuilder('r')
-            ->select('count(r.id)');
 
+        if ($dto->tagValue) {
+            $builder = $this->getFilterByTagQueryBuilder($dto->tagValue);
+        } else {
+            $builder = $this->createQueryBuilder('r');
+        }
+
+        $builder->select('count(r.id)');
         $this->attachResultsFilterCriteria($builder, $dto);
-
         $builder->andWhere('r.spent >= r.profit');
 
         try {
@@ -106,12 +109,14 @@ class ResultRepository extends ServiceEntityRepository
             $unprofitable = 0;
         }
 
-        $builder = $this
-            ->createQueryBuilder('r')
-            ->select('count(r.id)');
+        if ($dto->tagValue) {
+            $builder = $this->getFilterByTagQueryBuilder($dto->tagValue);
+        } else {
+            $builder = $this->createQueryBuilder('r');
+        }
 
+        $builder->select('count(r.id)');
         $this->attachResultsFilterCriteria($builder, $dto);
-
         $builder->andWhere('r.spent < r.profit');
 
         try {
