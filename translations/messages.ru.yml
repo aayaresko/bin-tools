@@ -54,10 +54,8 @@ trading:
         image: "Картинка"
         view_image: "Смотреть картинку"
         user:
-            title: "Прибыльность моей торговли"
             list: "Смотреть мои результаты"
         tag:
-            title: "Прибыльность по тэгу"
             list: "Смотреть результаты по тэгу"
         filter:
             date_from: "Дата от"
@@ -80,6 +78,7 @@ trading:
                 lower: "меньше"
     profitability:
         user:
+            my: "Прибыльность моей торговли"
             title: "Прибыльность пользователя"
             bets_per_period: "Пользователь '{{user}}' сделал {{totalBets}} ставок за выбраный период"
             profitability_for_period: "Точность ставок пользователя '{{user}}' за выбраный период составляет {{profitability}}%"
