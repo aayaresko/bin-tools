@@ -31,6 +31,8 @@ user:
     registered_at: "Дата регистрации"
 tags:
     title: "Тэги"
+tag:
+    value: "Значение"
 trading:
     tools: "Инструменты"
     user:
