@@ -31,6 +31,8 @@ user:
     registered_at: "Registration date"
 tags:
     title: "Tags"
+tag:
+    value: "Value"
 trading:
     tools: "Tools"
     user:
