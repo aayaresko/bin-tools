@@ -31,6 +31,7 @@ user:
     registered_at: "Registration date"
 tags:
     title: "Tags"
+    description: "Here you can see all tags created in the system"
 tag:
     value: "Value"
 trading:
