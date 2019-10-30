@@ -55,9 +55,7 @@ trading:
         view_image: "View image"
         user:
             list: "View my results"
-            title: "Profitability of my trading"
         tag:
-            title: "Profitability by tag"
             list: "View tags results"
         filter:
             date_from: "Date from"
@@ -80,6 +78,7 @@ trading:
                 lower: "lower"
     profitability:
         user:
+            my: "Profitability of my trading"
             title: "User profitability"
             bets_per_period: "The user '{{user}}' has made {{totalBets}} for the period"
             profitability_for_period: "Users '{{user}}' accuracy fot the period is {{profitability}}%"
