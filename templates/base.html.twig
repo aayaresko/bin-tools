@@ -34,7 +34,7 @@
                             {{ 'trading.result.tag.list'|trans }}
                         </a>
                         <a class="dropdown-item" href="{{ path('trading_profitability_by_tag', {'value': 'n'}) }}">
-                            {{ 'trading.result.tag.title'|trans }}
+                            {{ 'trading.profitability.tag.title'|trans }}
                         </a>
                     </div>
                 </li>
@@ -43,8 +43,8 @@
                         {{ 'trading.tools'|trans }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="toolsDropdown">
-                        <a class="dropdown-item" href="{{ path('steps') }}">{{ "trading.martingail.steps.title"|trans }}</a>
-                        <a class="dropdown-item" href="{{ path('trading_profitability') }}">{{ "trading.profitability.title"|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('steps') }}">{{ 'trading.martingail.steps.title'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('trading_profitability') }}">{{ 'trading.profitability.title'|trans }}</a>
                     </div>
                 </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -60,7 +60,7 @@
                                 {{ 'trading.result.create'|trans }}
                             </a>
                             <a class="dropdown-item" href="{{ path('trading_profitability_by_user', {'user': app.user.id}) }}">
-                                {{ 'trading.result.user.title'|trans }}
+                                {{ 'trading.profitability.user.my'|trans }}
                             </a>
                         </div>
                     </li>

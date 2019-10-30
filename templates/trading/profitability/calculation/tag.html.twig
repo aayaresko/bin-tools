@@ -17,8 +17,7 @@
             {% form_theme form 'form/bootstrap_4_layout.html.twig' %}
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
             <div class="form-group">
-                <label for="tag" class="mr-1">{{ 'trading.tag.value'|trans }}</label>
-                <select id="tag" class="form-control js-select-single">
+                <select id="tag" class="form-control js-select-single" multiple>
                     {% for tag in availableTags %}
                         {% set selected = (tag.value == value) ? 'selected' : '' %}
                         <option {{ selected }}>{{ tag.value }}</option>
@@ -67,7 +66,9 @@
 
             target.select2({
                 tags: true,
-                language: '{{ app.request.locale }}'
+                language: '{{ app.request.locale }}',
+                placeholder: '{{ 'trading.tag.value'|trans }}',
+                maximumSelectionLength: 1
             });
 
             target.on("select2:select", function (event) {
