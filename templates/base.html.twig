@@ -25,18 +25,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('user_index') }}">{{ 'users.title'|trans }}</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="tagsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ 'tags.title'|trans }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="tagsDropdown">
-                        <a class="dropdown-item" href="{{ path('results_search_by_tag', {'value': 'n'}) }}">
-                            {{ 'trading.result.tag.list'|trans }}
-                        </a>
-                        <a class="dropdown-item" href="{{ path('trading_profitability_by_tag', {'value': 'n'}) }}">
-                            {{ 'trading.profitability.tag.title'|trans }}
-                        </a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('tag_index') }}">{{ 'tags.title'|trans }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

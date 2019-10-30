@@ -60,6 +60,14 @@ user_index:
     requirements:
         _locale: en|ru
 
+tag_index:
+    path: /{_locale}/tag
+    controller: App\Controller\TagController::index
+    defaults: {_locale: ru}
+    methods: [GET, POST]
+    requirements:
+        _locale: en|ru
+
 trading_profitability:
     path: /{_locale}/trading/profitability
     controller: App\Controller\StatisticController::calculateTradingProfitability
