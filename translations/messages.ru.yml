@@ -31,6 +31,7 @@ user:
     registered_at: "Дата регистрации"
 tags:
     title: "Тэги"
+    description: "Здесь Вы можете видеть список всех тэгов в системе"
 tag:
     value: "Значение"
 trading:
