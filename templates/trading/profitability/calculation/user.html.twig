@@ -22,12 +22,14 @@
                     <span class="input-group-text">{{ 'range.to'|trans }}</span>
                 </div>
                 {{ form_widget(form.dateTo) }}
+                <button type="submit" class="btn-success btn">{{ 'calculate'|trans }}</button>
             </div>
-            <button type="submit" class="btn-success btn">{{ 'calculate'|trans }}</button>
-            <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
-            <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
-            <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
-            <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
+            <div class="ml-5">
+                <a href="#" id="for-a-month" class="btn-secondary btn ml-5">{{ 'range.month'|trans }}</a>
+                <a href="#" id="for-six-months" class="btn-secondary btn ml-1">{{ 'range.half_a_year'|trans }}</a>
+                <a href="#" id="for-a-year" class="btn-secondary btn ml-1">{{ 'range.year'|trans }}</a>
+                <a href="#" id="reset" class="btn-primary btn ml-1">{{ 'reset'|trans }}</a>
+            </div>
             {{ form_end(form) }}
         </div>
     </div>
