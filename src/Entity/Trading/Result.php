@@ -18,7 +18,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Result
 {
-    const DIVISOR = 100000;
+    const QUOTE_DIVISOR = 100000;
+    const PROFIT_DIVISOR = 100;
 
     use HasUserTrait, HasCreatedAtTrait, HasMediaFileTrait;
 
@@ -107,24 +108,24 @@ class Result
 
     public function getOpeningQuote(): ?float
     {
-        return $this->openingQuote / self::DIVISOR;
+        return $this->openingQuote / self::QUOTE_DIVISOR;
     }
 
     public function setOpeningQuote(float $openingQuote): self
     {
-        $this->openingQuote = self::DIVISOR * $openingQuote;
+        $this->openingQuote = self::QUOTE_DIVISOR * $openingQuote;
 
         return $this;
     }
 
     public function getClosingQuote(): ?float
     {
-        return $this->closingQuote / self::DIVISOR;
+        return $this->closingQuote / self::QUOTE_DIVISOR;
     }
 
     public function setClosingQuote(float $closingQuote): self
     {
-        $this->closingQuote = self::DIVISOR * $closingQuote;
+        $this->closingQuote = self::QUOTE_DIVISOR * $closingQuote;
 
         return $this;
     }
@@ -143,12 +144,12 @@ class Result
 
     public function getProfit(): ?float
     {
-        return $this->profit;
+        return $this->profit / self::PROFIT_DIVISOR;
     }
 
     public function setProfit(float $profit): self
     {
-        $this->profit = $profit;
+        $this->profit = $profit * self::PROFIT_DIVISOR;
 
         return $this;
     }
