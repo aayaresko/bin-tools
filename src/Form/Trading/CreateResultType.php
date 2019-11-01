@@ -39,7 +39,8 @@ class CreateResultType extends AbstractType
             ->add('date', DateType::class, [
                 'label' => 'trading.result.date',
                 'widget' => 'single_text',
-                'format' => 'dd.mm.yyyy',
+                'format' => 'dd.MM.yyyy',
+                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                     'autocomplete' => 'off'
