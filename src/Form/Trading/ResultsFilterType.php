@@ -16,7 +16,8 @@ class ResultsFilterType extends AbstractType
             ->add('dateFrom', DateType::class, [
                 'label' => 'trading.result.filter.date_from',
                 'widget' => 'single_text',
-                'format' => 'dd.mm.yyyy',
+                'format' => 'dd.MM.yyyy',
+                'html5' => false,
                 'attr' => [
                     'class' => 'input-sm',
                     'name' => 'start',
@@ -26,7 +27,8 @@ class ResultsFilterType extends AbstractType
             ->add('dateTo', DateType::class, [
                 'label' => 'trading.result.filter.date_to',
                 'widget' => 'single_text',
-                'format' => 'dd.mm.yyyy',
+                'format' => 'dd.MM.yyyy',
+                'html5' => false,
                 'attr' => [
                     'class' => 'input-sm',
                     'name' => 'end',
